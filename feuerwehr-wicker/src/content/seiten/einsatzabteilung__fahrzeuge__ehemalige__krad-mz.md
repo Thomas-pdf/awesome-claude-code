@@ -41,4 +41,4 @@ Leider hatte die „günstige“ Technik auch ihre Macken. Andauernde Zusammenbr
 
 ![Mz2](/bilder/archiv/565_20081206151605_850613.webp)
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](/einsatzabteilung/fahrzeuge/kraeder-tel-mtk)

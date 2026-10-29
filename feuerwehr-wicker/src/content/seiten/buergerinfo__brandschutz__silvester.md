@@ -51,4 +51,4 @@ Jeden Samstag zwischen 13:30 und 17:00 Uhr im Feuerwehrhaus in Wicker.
 
 Wir wünschen Ihnen einen guten Start in das neue Jahr!
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](/buergerinfo/brandschutz)

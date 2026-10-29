@@ -38,4 +38,4 @@ Wenn das Kind mit 6 Jahren dann zur Schule geht, besuchen Sie mit ihm Ihre Feuer
 
 [Kontakt zur Feuerwehr Wicker](/kontakt/einsatzabteilung)
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](/brandschutzerziehung)

@@ -26,9 +26,9 @@ Jeden Montag zwischen 16:30 und 18:00 Uhr findet die Gruppenstunde im Feuerwehrh
 
 ### Ansprechpartner:
 
-![Manuela Kaschel](/bilder/archiv/2109_20150407205928_920374.webp)
+[![Manuela Kaschel](/bilder/archiv/2109_20150407205928_920374.webp)](/)
 
-![Karsten Hillner](/bilder/archiv/2550_20160829081756_639586.webp)
+[![Karsten Hillner](/bilder/archiv/2550_20160829081756_639586.webp)](/)
 
 ### Flyer Kinderfeuerwehr:
 

@@ -195,8 +195,10 @@ class MD(MarkdownConverter):
         href = fix_link(href)
         t = text.strip()
         if not t: return ""
-        if t.startswith("![") or t.startswith("\n"):  # Bild-Link
-            return text
+        if t.startswith("!["):  # Bild-Link: verlinktes Bild beibehalten
+            if href.startswith("/bilder/"):
+                return text
+            return f"\n\n[{t}]({href})\n\n"
         return f"[{t}]({href})"
     def convert_font(self, el, text, parent_tags=None, **kw):
         if (el.get("color") or "").lower() in ("silver", "#c0c0c0", "gray", "grey", "#808080") and text.strip():

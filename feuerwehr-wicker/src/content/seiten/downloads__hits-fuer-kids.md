@@ -28,17 +28,17 @@ Egal ob es brennt, ob du etwas Giftiges gegessen hast oder ob dein Bruder oder d
 
 Zum Glück kommt man nur sehr selten - vielleicht sogar nie in eine Situation, in der man unsere folgenden Tipps tatsächlich braucht. Doch wenn du weißt, wie du in brenzligen Situationen richtig handelst, dann kann das Leben retten. Deshalb haben wir hier ein paar wenige Regeln zusammengestellt, die im Notfall weiterhelfen. 
 
-![Notrufzettel](/bilder/archiv/494_20081125150033_671214.webp)
+[![Notrufzettel](/bilder/archiv/494_20081125150033_671214.webp)](/downloads/dateien/20081125150322_975251.pdf)
 
-![Was tun wenns brennt](/bilder/archiv/495_20081125150141_131643.webp)
+[![Was tun wenns brennt](/bilder/archiv/495_20081125150141_131643.webp)](/downloads/dateien/20081125150424_327035.pdf)
 
-![Was tun](/bilder/archiv/496_20081125150211_197586.webp)
+[![Was tun](/bilder/archiv/496_20081125150211_197586.webp)](/downloads/dateien/20081125150523_405969.pdf)
 
 ![Linie_640.png](/bilder/archiv/305_20081121105850_590319.webp)
 
 ### Feuerwehr Wicker Stundenplan
 
-![Stundenplan](/bilder/archiv/475_20081124165903_676114.webp)
+[![Stundenplan](/bilder/archiv/475_20081124165903_676114.webp)](/downloads/dateien/20081124165950_724154.pdf)
 
 ![Linie_640.png](/bilder/archiv/305_20081121105850_590319.webp)
 
@@ -48,7 +48,7 @@ Zum Glück kommt man nur sehr selten - vielleicht sogar nie in eine Situation, i
 
 ### Du bist der Haushaltsfeuerwehrchef
 
-![Ampelinis](/bilder/archiv/497_20081125153048_574155.webp)
+[![Ampelinis](/bilder/archiv/497_20081125153048_574155.webp)](http://www.ampelini.de/)
 
 Löse die Aufgaben und erhalte die Feuerwehrchef Ehrenmedaille
 
@@ -56,36 +56,36 @@ Löse die Aufgaben und erhalte die Feuerwehrchef Ehrenmedaille
 
 ### Malvorlagen
 
-![malvorlage_fm001](/bilder/archiv/75_20081119110608_663262.webp)
+[![malvorlage_fm001](/bilder/archiv/75_20081119110608_663262.webp)](/downloads/dateien/20081120160144_256686.pdf)
 
-![malvorlage_ffkatze](/bilder/archiv/76_20081119110638_646426.webp)
+[![malvorlage_ffkatze](/bilder/archiv/76_20081119110638_646426.webp)](/downloads/dateien/20081120160400_600773.pdf)
 
-![malvorlage_fm003](/bilder/archiv/77_20081119110659_488897.webp)
+[![malvorlage_fm003](/bilder/archiv/77_20081119110659_488897.webp)](/downloads/dateien/20081120160521_772275.pdf)
 
-![malvorlage_fwmaenner](/bilder/archiv/83_20081119110931_322584.webp)
+[![malvorlage_fwmaenner](/bilder/archiv/83_20081119110931_322584.webp)](/downloads/dateien/20081120160655_105885.pdf)
 
-![malvorlage_ffsaurier](/bilder/archiv/78_20081119110731_359451.webp)
+[![malvorlage_ffsaurier](/bilder/archiv/78_20081119110731_359451.webp)](/downloads/dateien/20081120161002_577345.pdf)
 
-![malvorlage_fm004](/bilder/archiv/80_20081119110820_749378.webp)
+[![malvorlage_fm004](/bilder/archiv/80_20081119110820_749378.webp)](/downloads/dateien/20081120162400_569973.pdf)
 
-![malvorlage_fm002](/bilder/archiv/79_20081119110758_780539.webp)
+[![malvorlage_fm002](/bilder/archiv/79_20081119110758_780539.webp)](/downloads/dateien/20081120162710_643770.pdf)
 
-![malvorlage_fm005](/bilder/archiv/81_20081119110849_169629.webp)
+[![malvorlage_fm005](/bilder/archiv/81_20081119110849_169629.webp)](/downloads/dateien/20081120162811_642670.pdf)
 
-![malvorlage_lf8](/bilder/archiv/84_20081119110956_264580.webp)
+[![malvorlage_lf8](/bilder/archiv/84_20081119110956_264580.webp)](/downloads/dateien/20081120162922_191764.pdf)
 
-![malvorlage_lf16](/bilder/archiv/85_20081119111032_591980.webp)
+[![malvorlage_lf16](/bilder/archiv/85_20081119111032_591980.webp)](/downloads/dateien/20081120162942_247603.pdf)
 
-![malvorlage_rw](/bilder/archiv/86_20081119111057_638999.webp)
+[![malvorlage_rw](/bilder/archiv/86_20081119111057_638999.webp)](/downloads/dateien/20081120163026_831226.pdf)
 
 ![Linie_640.png](/bilder/archiv/305_20081121105850_590319.webp)
 
 ### Bastelbögen
 
-![bastelbogen_lf_klein](/bilder/archiv/87_20081119113151_448896.webp)
+[![bastelbogen_lf_klein](/bilder/archiv/87_20081119113151_448896.webp)](/downloads/dateien/20081120163811_566372.pdf)
 
-![bastelbogen_lf16_klein](/bilder/archiv/88_20081119113211_538599.webp)
+[![bastelbogen_lf16_klein](/bilder/archiv/88_20081119113211_538599.webp)](/downloads/dateien/20081120163906_193460.pdf)
 
-![bastelbogen_mtf_klein](/bilder/archiv/89_20081119113233_107992.webp)
+[![bastelbogen_mtf_klein](/bilder/archiv/89_20081119113233_107992.webp)](/downloads/dateien/20081120164036_366551.pdf)
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](/downloads)

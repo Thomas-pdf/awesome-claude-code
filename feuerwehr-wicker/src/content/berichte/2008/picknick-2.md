@@ -77,4 +77,4 @@ Zum Schluß möchte ich allen, die geholfen haben, nochmals danken. Ohne Euch is
 
 *sp 05/2005*
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](https://www.feuerwehr-wicker.de/index_main.php?page= 108)

@@ -58,4 +58,4 @@ An Schutzbekleidung steht moderne Textil Jacke und Hose mit Protektoren zu Verf√
 
 ![Krad 2-15_3](/bilder/archiv/224_20081120113402_771698.webp)
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](/einsatzabteilung/fahrzeuge/kraeder-tel-mtk)

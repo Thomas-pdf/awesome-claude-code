@@ -15,35 +15,35 @@ alteUrl: "https://www.feuerwehr-wicker.de/index_main.php?page=610"
 
 Klicken Sie auf das entsprechende Fahrzeug, um zu den Details zu gelangen ...
 
-![LF 8-6](/bilder/archiv/6027_20260405150832_666974.webp)
+[![LF 8-6](/bilder/archiv/6027_20260405150832_666974.webp)](/einsatzabteilung/fahrzeuge/ehemalige/lf-8-6)
 
  [Löschgruppenfahrzeug LF 8/6 / 1993 bis 2026](/einsatzabteilung/fahrzeuge/ehemalige/lf-8-6)
 
-![Krad BMW F650](/bilder/archiv/4114_20201012093427_849726.webp)
+[![Krad BMW F650](/bilder/archiv/4114_20201012093427_849726.webp)](/einsatzabteilung/fahrzeuge/ehemalige/krad-bmw-f650)
 
  [Feuerwehrmotorrad BMW F 650 GS Dakar / 2008 bis 2020](/einsatzabteilung/fahrzeuge/ehemalige/krad-bmw-f650)
 
-![Ehemalige Fahrzeuge XT](/bilder/archiv/3991_20200131162309_894565.webp)
+[![Ehemalige Fahrzeuge XT](/bilder/archiv/3991_20200131162309_894565.webp)](/einsatzabteilung/fahrzeuge/ehemalige/krad-yamaha)
 
  [Feuerwehrmotorrad Yamaha XT / 2004 bis 2020](/einsatzabteilung/fahrzeuge/ehemalige/krad-yamaha)
 
-![Ehemalige Fahrzeuge GW-Kran](/bilder/archiv/3992_20200131162400_881468.webp)
+[![Ehemalige Fahrzeuge GW-Kran](/bilder/archiv/3992_20200131162400_881468.webp)](/einsatzabteilung/fahrzeuge/ehemalige/gw-n-kran)
 
  [Gerätewagen mit Kran GW-N-Kran / 1999 bis 2016](/einsatzabteilung/fahrzeuge/ehemalige/gw-n-kran)
 
-![Ehemalige Fahrzeuge Movano](/bilder/archiv/3993_20200131162423_663740.webp)
+[![Ehemalige Fahrzeuge Movano](/bilder/archiv/3993_20200131162423_663740.webp)](/einsatzabteilung/fahrzeuge/ehemalige/mtf-movano)
 
  [Mannschaftstransportfahrzeug Opel Movano / 2001-2012](/einsatzabteilung/fahrzeuge/ehemalige/mtf-movano)
 
-![Ehemalige Fahrzeuge Aprilla](/bilder/archiv/3994_20200131162439_597591.webp)
+[![Ehemalige Fahrzeuge Aprilla](/bilder/archiv/3994_20200131162439_597591.webp)](/einsatzabteilung/fahrzeuge/ehemalige/krad-aprilia)
 
  [Feuerwehrmotorrad Aprilia / 1999-2004](/einsatzabteilung/fahrzeuge/ehemalige/krad-aprilia)
 
-![Ehemalige Fahrzeuge T3](/bilder/archiv/3996_20200131162510_225289.webp)
+[![Ehemalige Fahrzeuge T3](/bilder/archiv/3996_20200131162510_225289.webp)](/einsatzabteilung/fahrzeuge/ehemalige/mtf-vw-t3)
 
  [Mannschaftstransportfahrzeug / 1983-2001](/einsatzabteilung/fahrzeuge/ehemalige/mtf-vw-t3)
 
-![Ehemalige Fahrzeuge MZ](/bilder/archiv/3995_20200131162453_535493.webp)
+[![Ehemalige Fahrzeuge MZ](/bilder/archiv/3995_20200131162453_535493.webp)](/einsatzabteilung/fahrzeuge/ehemalige/krad-mz)
 
  [Feuerwehrmotorrad MZ / 1994-1999](/einsatzabteilung/fahrzeuge/ehemalige/krad-mz)
 

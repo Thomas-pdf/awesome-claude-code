@@ -35,8 +35,8 @@ Infos zur Freiwilligen Feuerwehr Ehlhalten unter: \
 
 Infos zur Organisation Paulinchen:
 
-![Paulinchen](/bilder/archiv/809_20090512083433_954891.gif)
+[![Paulinchen](/bilder/archiv/809_20090512083433_954891.gif)](http://www.paulinchen.de/)
 
 *th 05/2009*
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](/aktuelles?bereich=verein)

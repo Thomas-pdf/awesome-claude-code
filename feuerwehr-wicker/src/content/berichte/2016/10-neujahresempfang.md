@@ -148,4 +148,4 @@ Moritz Boettcher, Indra Süss, Alexander Johanntokrax, Lucas Dörhöfer, Dejan D
 
 *mk 2/2011*
 
-![pfeil_hoch](/bilder/archiv/471_20081124160153_213650.webp)
+[![pfeil_hoch](/bilder/archiv/471_20081124160153_213650.webp)](/einsatzabteilung)

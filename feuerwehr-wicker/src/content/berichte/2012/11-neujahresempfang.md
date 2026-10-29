@@ -148,4 +148,4 @@ Nassir Bendadda (Auffüller)
 
 *mk 1/2012*
 
-![pfeil_hoch](/bilder/archiv/471_20081124160153_213650.webp)
+[![pfeil_hoch](/bilder/archiv/471_20081124160153_213650.webp)](/einsatzabteilung)

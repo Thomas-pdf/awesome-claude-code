@@ -24,7 +24,7 @@ Der Verlesung des Protokolls der letzten Sitzung schlossen sich die Jahresberich
 
 ### Jahresbericht 2024 (7 MB)
 
-![Jahresbericht 2024 - Freiwillige Feuerwehr Wicker](/bilder/archiv/5512_20250220183849_925881.webp)
+[![Jahresbericht 2024 - Freiwillige Feuerwehr Wicker](/bilder/archiv/5512_20250220183849_925881.webp)](/downloads/dateien/20250225193940_750361.pdf)
 
 Als nächster Tagesordnungspunkt folgten turnusmäßig die Neuwahlen. Hier wurden in geheimer Wahl Markus Kaschel als Wehrführer und Marcel Ullrich als sein Stellvertreter in Ihren Ämtern für die nächsten Periode bestätigt.
 

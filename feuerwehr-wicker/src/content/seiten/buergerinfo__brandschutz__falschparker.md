@@ -35,6 +35,6 @@ Haben Sie noch Fragen oder benötigen Sie Informationen zum Thema "Lassen Sie un
 
 Wir beraten Sie gerne : [info@feuerwehr-wicker.de](/)
 
-![pfeil_hoch](/bilder/archiv/471_20081124160153_213650.webp)
+[![pfeil_hoch](/bilder/archiv/471_20081124160153_213650.webp)](#BIhoch)
 
 *Dieser Artikel stammt ursprünglich von unseren Kameraden der [Feuerwehr Verden](http://www.feuerwehr-verden.de/).*

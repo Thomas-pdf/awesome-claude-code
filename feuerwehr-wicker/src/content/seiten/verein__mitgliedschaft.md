@@ -44,4 +44,4 @@ Weitere Informationen zur Arbeit der Wickerer Feuerwehr erhalten Sie in unserem 
 
 Natürlich können Sie uns auch jeden Samstag zwischen 13.30 und 16.00 Uhr im Feuerwehrhaus besuchen. 
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](/verein)

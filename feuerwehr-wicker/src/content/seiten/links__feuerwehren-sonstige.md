@@ -95,4 +95,4 @@ alteUrl: "https://www.feuerwehr-wicker.de/index_main.php?page=188"
 
 [Freiwillige Feuerwehr Willingen(Upland) (Usseln / Waldeck-Frankenberg / Deutschland)](http://www.Feuerwehr-Usseln.de)
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](/links)

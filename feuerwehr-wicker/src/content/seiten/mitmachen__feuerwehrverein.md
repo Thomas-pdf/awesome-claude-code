@@ -87,8 +87,8 @@ Freiwillige Feuerwehr Wicker 1925 e.V.*
 Haben Sie noch Fragen?\
 Wir stehen Ihnen gerne zur Verfügung:
 
-![Tobias Heimbuch](/bilder/archiv/4318_20210709110750_174285.webp)
+[![Tobias Heimbuch](/bilder/archiv/4318_20210709110750_174285.webp)](/)
 
-![Tobias Müller](/bilder/archiv/4846_20230625135011_233489.webp)
+[![Tobias Müller](/bilder/archiv/4846_20230625135011_233489.webp)](/)
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](/mitmachen)

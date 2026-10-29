@@ -39,4 +39,4 @@ Wer diese wenigen Regeln beachtet, der kann auch am Aschermittwoch noch fröhlic
 
 Bei weiteren Fragen steht ihnen die Feuerwehr Wicker gerne zur Verfügung. Schreiben sie uns doch einfach eine [Nachricht](/)
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](/buergerinfo/brandschutz)

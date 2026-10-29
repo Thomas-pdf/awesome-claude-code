@@ -56,4 +56,4 @@ Ich hoffe, das wir seitens der TEL Kradmelder Alle daran teilnehmen können. Ich
 
 *en 06/2004*
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](/einsatzabteilung/ausbildung)

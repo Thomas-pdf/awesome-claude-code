@@ -84,7 +84,7 @@ Gerne sind wir bereit, Sie persönlich aufzuklären.\
 Sie können uns samstags von 13:30 Uhr - 17:00 Uhr im \
 Feuerwehrgerätehaus antreffen. 
 
-![pfeil_hoch](/bilder/archiv/471_20081124160153_213650.webp)
+[![pfeil_hoch](/bilder/archiv/471_20081124160153_213650.webp)](#BIhoch)
 
 ![Linie_640.png](/bilder/archiv/305_20081121105850_590319.webp)
 
@@ -119,7 +119,7 @@ Telefon: 06145 / 5476-0
 Telefon: 069 / 21388-110\
 Gas - Störungen und Notdienst
 
-![pfeil_hoch](/bilder/archiv/471_20081124160153_213650.webp)
+[![pfeil_hoch](/bilder/archiv/471_20081124160153_213650.webp)](#BIhoch)
 
 ![Linie_640.png](/bilder/archiv/305_20081121105850_590319.webp)
 
@@ -133,4 +133,4 @@ Mit einem speziellen Fax-Vordruck, der bereits im Vorfeld neben dem Telefaxgerä
 
 Das Gehörlosen-Fax ist als [Download](/downloads/dateien/20081205124013_312542.pdf) auf der Homepage der Feuerwehr Wicker verfügbar.
 
-![pfeil_hoch](/bilder/archiv/471_20081124160153_213650.webp)
+[![pfeil_hoch](/bilder/archiv/471_20081124160153_213650.webp)](#BIhoch)

@@ -46,6 +46,6 @@ In diesem Ausschuß sind drei von den Kindern und Jugendlichen gewählte Jugendf
 
 Haben Sie Fragen zur Jugendfeuerwehr?
 
-![Claudia Hochheimer](/bilder/archiv/4844_20230625134904_734738.webp)
+[![Claudia Hochheimer](/bilder/archiv/4844_20230625134904_734738.webp)](/)
 
-![Marvin Muschiol](/bilder/archiv/4845_20230625134936_546413.webp)
+[![Marvin Muschiol](/bilder/archiv/4845_20230625134936_546413.webp)](/)

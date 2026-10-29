@@ -48,4 +48,4 @@ Zum Abschluss erhält jeder Teilnehmer eine Teilnahmebescheinigung, den "Ich bin
 
 *ch 06/2013*
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](/brandschutzerziehung)

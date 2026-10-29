@@ -22,4 +22,4 @@ Baujahr: 2008
 **Einsatz zur Nachführung von Geräten und Verbrauchsmaterial\
 zu Einsatzstellen.**
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](/einsatzabteilung/fahrzeuge)

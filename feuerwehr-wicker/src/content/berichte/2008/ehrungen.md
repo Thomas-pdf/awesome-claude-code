@@ -22,4 +22,4 @@ Im Rahmen des Tages der offenen Tür ehrte Vereinsvorsitzender Stefan Predikant 
 
 ![Ehrung03](/bilder/archiv/267_20081120135852_749689.webp)
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](https://www.feuerwehr-wicker.de/index_main.php?page= 117)

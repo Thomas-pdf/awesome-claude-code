@@ -10,6 +10,6 @@ alteId: 38
 alteUrl: "https://www.feuerwehr-wicker.de/index_main.php?page=38"
 ---
 
-![Markus Kaschel](/bilder/archiv/4311_20210709105931_613587.webp)
+[![Markus Kaschel](/bilder/archiv/4311_20210709105931_613587.webp)](/)
 
-![Marcel Ullrich](/bilder/archiv/4312_20210709110024_551890.webp)
+[![Marcel Ullrich](/bilder/archiv/4312_20210709110024_551890.webp)](/)

@@ -48,4 +48,4 @@ Wir danken der Familie Skop für die Erlaubnis im Haus üben zu dürfen und The 
 
 *mk 3/2014*
 
-![pfeil_hoch](/bilder/archiv/471_20081124160153_213650.webp)
+[![pfeil_hoch](/bilder/archiv/471_20081124160153_213650.webp)](/einsatzabteilung)

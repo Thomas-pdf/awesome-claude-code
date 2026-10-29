@@ -81,4 +81,4 @@ Haben Sie noch Fragen oder benötigen Sie Informationen zum Thema "Reisen und Ur
 
 Wir beraten Sie gerne - [info@feuerwehr-wicker.de](/)
 
-![pfeil_hoch](/bilder/archiv/471_20081124160153_213650.webp)
+[![pfeil_hoch](/bilder/archiv/471_20081124160153_213650.webp)](#BIhoch)

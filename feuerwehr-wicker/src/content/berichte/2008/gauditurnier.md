@@ -27,4 +27,4 @@ Sollten wir im nächsten Jahr noch einmal an dem Turnier teilnehmen würde es mi
 Hier geht es zur Homepage des Veranstalters vom Gauditurnier:\
 [http://www.tv-wicker.de](http://www.tv-wicker.de)
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](https://www.feuerwehr-wicker.de/index_main.php?page= 117)

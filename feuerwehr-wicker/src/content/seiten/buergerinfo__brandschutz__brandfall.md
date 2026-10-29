@@ -48,4 +48,4 @@ Handlungsempfehlungen zum Umgang mit der kalten Brandstelle finden Sie [hier](/b
 
 [Noch Fragen?](/)
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](/buergerinfo/brandschutz)

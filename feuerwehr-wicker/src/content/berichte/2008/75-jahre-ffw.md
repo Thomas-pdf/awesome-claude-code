@@ -77,4 +77,4 @@ Und so sah unser Fest-LOGO aus:
 
 ![sym_fest2000](/bilder/archiv/152_20081119184017_934386.gif)
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](https://www.feuerwehr-wicker.de/index_main.php?page= 122)

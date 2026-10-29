@@ -40,4 +40,4 @@ Auf dem Hinweisschild ist der Durchmesser der Rohrleitung (hier 100 mm - H 100) 
 
 [Noch Fragen?](/)
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](/buergerinfo/brandschutz)

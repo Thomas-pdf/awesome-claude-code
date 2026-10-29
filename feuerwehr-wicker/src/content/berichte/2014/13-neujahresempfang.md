@@ -235,4 +235,4 @@ Der Neujahresempfang endete mit leckerem Essen und kühlen Getränken in gemütl
 
 *mk 1/2014*
 
-![pfeil_hoch](/bilder/archiv/471_20081124160153_213650.webp)
+[![pfeil_hoch](/bilder/archiv/471_20081124160153_213650.webp)](/einsatzabteilung)

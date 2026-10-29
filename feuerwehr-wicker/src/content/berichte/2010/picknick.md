@@ -74,4 +74,4 @@ Vielen Dank auch den vielen helfenden Händen, die maßgeblich zum Erfolg der Ve
 
 *th 06/2009*
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](/aktuelles?bereich=verein)

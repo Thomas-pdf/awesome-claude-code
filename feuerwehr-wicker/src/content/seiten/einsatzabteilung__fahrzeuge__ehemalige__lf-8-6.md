@@ -71,4 +71,4 @@ Weitere Ausrüstung u.a.:
 
 ![LF 8/6 01-2017](/bilder/archiv/2763_20170202082921_235157.webp)
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](/einsatzabteilung/fahrzeuge)

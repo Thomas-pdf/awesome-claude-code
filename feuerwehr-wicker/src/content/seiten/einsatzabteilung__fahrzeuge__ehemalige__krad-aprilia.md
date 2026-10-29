@@ -54,4 +54,4 @@ Und so wunderte es uns nicht, das unser Gutes Stück (nach ein paar Jahren der E
 
 ![Krad Aprillia_4](/bilder/archiv/600_20081208090017_419696.webp)
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](/einsatzabteilung/fahrzeuge/kraeder-tel-mtk)

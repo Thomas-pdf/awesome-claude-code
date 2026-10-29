@@ -152,4 +152,4 @@ Dennis Kinkel (Weilbach)
 
 *mk 1/2009*
 
-![pfeil_hoch](/bilder/archiv/471_20081124160153_213650.webp)
+[![pfeil_hoch](/bilder/archiv/471_20081124160153_213650.webp)](/einsatzabteilung)

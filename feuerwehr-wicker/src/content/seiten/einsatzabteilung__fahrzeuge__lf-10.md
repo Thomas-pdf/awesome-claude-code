@@ -97,4 +97,4 @@ Weitere Ausrüstung u.a.:
 
 [Zum Bericht von der offiziellen Übergabe des Löschfahrzeuges](/aktuelles/2017/uebergabe-lf-10)
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](/einsatzabteilung/fahrzeuge)

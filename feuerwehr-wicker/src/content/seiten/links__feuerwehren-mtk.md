@@ -147,4 +147,4 @@ alteUrl: "https://www.feuerwehr-wicker.de/index_main.php?page=185"
 
 ![Linie_640.png](/bilder/archiv/305_20081121105850_590319.webp)
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](/links)

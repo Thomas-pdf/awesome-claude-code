@@ -35,4 +35,4 @@ Direkt im Anschluss startete Erik Niedermeier einen Experimentalvortrag. Nun kon
 
 Alles in allem war es eine richtig gelungene Aktion. Auch die anderen Vorlesungen wurden an diesem Tag sehr gut besucht. Somit konnten wir die Stadtbücherei bei ihrem Jubiläum unterstützen und uns auch selbst den Kindern präsentieren. Und für manch einen war die Zeit bei der Feuerwehr so interessant, dass er gleich auch zu den Übungen wiederkommt.
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](https://www.feuerwehr-wicker.de/index_main.php?page= 102)

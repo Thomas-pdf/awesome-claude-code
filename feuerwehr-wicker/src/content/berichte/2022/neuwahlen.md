@@ -28,23 +28,23 @@ Die Jahresberichte aller Abteilungen lagen in gebundener Form vor, so dass auf e
 
 Somit wird die Feuerwehr Flörsheim-Wicker bis zum Ende der Wahlperiode im Jahr 2025 von Markus Kaschel und Marcel Ullrich geführt:
 
-![Markus Kaschel](/bilder/archiv/4311_20210709105931_613587.webp)
+[![Markus Kaschel](/bilder/archiv/4311_20210709105931_613587.webp)](/)
 
-![Marcel Ullrich](/bilder/archiv/4312_20210709110024_551890.webp)
+[![Marcel Ullrich](/bilder/archiv/4312_20210709110024_551890.webp)](/)
 
 Der Jugendfeuerwehrleitung gehört künftig neben dem neuen Jugendfeuerwahrwart Marvin Muschiol und der Stellv. Jugendfeuerwehrwartin Claudia Hochheimer auch Mika Heimbuch an:
 
-![Marvin Muschiol](/bilder/archiv/4313_20210709110220_667703.webp)
+[![Marvin Muschiol](/bilder/archiv/4313_20210709110220_667703.webp)](/)
 
-![Claudia Hochheimer](/bilder/archiv/4314_20210709110302_192609.webp)
+[![Claudia Hochheimer](/bilder/archiv/4314_20210709110302_192609.webp)](/)
 
-![Mika Heimbuch](/bilder/archiv/4315_20210709110347_696832.webp)
+[![Mika Heimbuch](/bilder/archiv/4315_20210709110347_696832.webp)](/)
 
 Keine Veränderung gab es bei der Leitung der Kinderfeuerwehr. Diese wird weiterhin von Manuela Kaschel und Karsten Hillner verantwortet:
 
-![Manuela Kaschel](/bilder/archiv/4316_20210709110527_764558.webp)
+[![Manuela Kaschel](/bilder/archiv/4316_20210709110527_764558.webp)](/)
 
-![Karsten Hillner](/bilder/archiv/4317_20210709110616_338562.webp)
+[![Karsten Hillner](/bilder/archiv/4317_20210709110616_338562.webp)](/)
 
 Im Anschluss ernannte die Wehrführung die weiteren Funktionen. Alessia Hörning verstärkt ab sofort das Team der Jugendgruppenleiter. Alle weiteren Funktionen blieben unverändert.
 

@@ -54,9 +54,9 @@ Wessen Interesse jetzt beim Lesen geweckt wurde, den laden wir ebenfalls sehr he
 - per Mail: [info(at)feuerwehr-wicker.de](/),
 - oder bei unserer Wehrführung: 
 
-![Markus Kaschel](/bilder/archiv/2105_20150407205549_991737.webp)
+[![Markus Kaschel](/bilder/archiv/2105_20150407205549_991737.webp)](/)
 
-![Andreas Hochheimer](/bilder/archiv/2106_20150407205626_433376.webp)
+[![Andreas Hochheimer](/bilder/archiv/2106_20150407205626_433376.webp)](/)
 
 Um aktiv in der Feuerwehr mitzumachen, bedarf es keiner besonderen Fähigkeiten. Sie sollten zwischen 17 und 50 Jahren alt und körperlich gesund sein.
 

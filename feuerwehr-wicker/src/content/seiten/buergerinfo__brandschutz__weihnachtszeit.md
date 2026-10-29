@@ -43,4 +43,4 @@ Geben Sie für Ihre Weihnachtsbeleuchtung lieber etwas mehr Geld aus, es ist zu 
 
 Sollte es trotz aller Vorsichtsmaßnahmen dennoch zu einem Brand gekommen sein, dann denken Sie immer daran, sofort die Feuerwehr unter der [Rufnummer 112](/buergerinfo/verhalten-im-notfall) zu alarmieren. 
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](/buergerinfo/brandschutz)

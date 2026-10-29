@@ -55,4 +55,4 @@ Vielen Dank an das Kinder- und Jugendhaus Eckenheim für den Verleih von Spielge
 
 *sp 05/2003*
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](https://www.feuerwehr-wicker.de/index_main.php?page= 117)

@@ -10,3 +10,14 @@ import Base from '../layouts/Base.astro';
     <p style="margin-top:3rem" class="hinweis">Im Notfall wählen Sie bitte immer die <a href="tel:112"><strong>112</strong></a>.</p>
   </section>
 </Base>
+<script>
+  // Alte Links (index_main.php?page=123, einsaetze.php?enr=456) auf neue Adressen umleiten – funktioniert bei jedem Hoster
+  const q = new URLSearchParams(location.search);
+  if (q.has('page') || q.has('enr') || /\.php$/.test(location.pathname)) {
+    fetch('/weiterleitungen.json').then((r) => r.json()).then((m) => {
+      const ziel = (q.get('enr') && m.einsaetze[q.get('enr')]) || (q.get('page') && m.seiten[q.get('page')])
+        || (/einsaetze\.php/.test(location.pathname) ? '/einsaetze' : /termine\.php/.test(location.pathname) ? '/termine' : '/');
+      location.replace(ziel);
+    }).catch(() => {});
+  }
+</script>

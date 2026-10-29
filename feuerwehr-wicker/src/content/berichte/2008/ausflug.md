@@ -22,4 +22,4 @@ Das Datum, der 10.06., erwies sich für unseren diesjährigen Ausflug als perfek
 
 ![Ausflug06](/bilder/archiv/646_20081208125726_266659.webp)
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](https://www.feuerwehr-wicker.de/index_main.php?page= 104)

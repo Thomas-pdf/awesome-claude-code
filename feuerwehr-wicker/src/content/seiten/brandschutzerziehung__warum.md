@@ -61,4 +61,4 @@ Weitere Informationen zum Notruf finden Sie hier: \
 Fragen Sie gerne einen Besuch der Feuerwehr bei unserer Wehrführung an.\
 [Kontakt zur Feuerwehr Wicker](/kontakt/einsatzabteilung)
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](/brandschutzerziehung)

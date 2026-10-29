@@ -14,9 +14,9 @@ alteUrl: "https://www.feuerwehr-wicker.de/index_main.php?page=25"
 
 Die Feuerwehr Wicker erstellt regelmäßig zum Ende eines Kalenderjahres einen Jahresbereicht des abgelaufenen Jahres. Dieser Jahresbericht wird im Rahmen der Jahreshauptversammlung der Öffentlichkeit vorgestellt. Natürlich steht unser Jahresbericht auch interessierten Bürgern als Download zur Verfügung. 
 
-![Listpfeil](/bilder/archiv/399_20081123164958_511951.webp)
+[![Listpfeil](/bilder/archiv/399_20081123164958_511951.webp)
 
- zu den Jahresberichten
+ zu den Jahresberichten](/downloads/jahresberichte)
 
 ![Linie_640.png](/bilder/archiv/305_20081121105850_590319.webp)
 
@@ -24,9 +24,9 @@ Die Feuerwehr Wicker erstellt regelmäßig zum Ende eines Kalenderjahres einen J
 
 Extra für unsere Kleinsten haben wir hier eine reihe lustiger aber auch sehr hilfreicher Informationen über die Feuerwehr zusammen gestellt. Viel Spaß beim stöbern.
 
-![Listpfeil](/bilder/archiv/399_20081123164958_511951.webp)
+[![Listpfeil](/bilder/archiv/399_20081123164958_511951.webp)
 
- weiter…
+ weiter…](/downloads/hits-fuer-kids)
 
 ![Linie_640.png](/bilder/archiv/305_20081121105850_590319.webp)
 
@@ -34,6 +34,6 @@ Extra für unsere Kleinsten haben wir hier eine reihe lustiger aber auch sehr hi
 
 Hier finden Sie viele weitere interessante Dateien als Download.
 
-![Listpfeil](/bilder/archiv/399_20081123164958_511951.webp)
+[![Listpfeil](/bilder/archiv/399_20081123164958_511951.webp)
 
- weiter…
+ weiter…](/)

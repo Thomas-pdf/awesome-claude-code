@@ -1,0 +1,43 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+<Base title="Mitgliederbereich (Demo)" noindex>
+  <section class="login-seite">
+    <div class="login-karte">
+      <p class="demo-band">DEMO · Prototyp · keine echten Daten</p>
+      <svg viewBox="0 0 64 64" width="56" height="56" aria-hidden="true"><path d="M32 3 7 11v19c0 15.5 10.6 26.5 25 31 14.4-4.5 25-15.5 25-31V11L32 3Z" fill="#c8102e"/><path d="m15.5 20 6.4 24h4.3l5.8-17.2L37.8 44h4.3l6.4-24h-5.2l-3.8 15.6L34.3 20h-4.6l-5.2 15.6L20.7 20Z" fill="#fff"/></svg>
+      <h1>Mitgliederbereich</h1>
+      <p class="login-text">Für aktive Mitglieder: Dienste &amp; Lehrgänge, eigene Tauglichkeiten, Verteiler und Dokumente.</p>
+      <form class="login-form" action="/intern/bereich" method="get" data-login>
+        <label for="benutzer">Benutzername oder E-Mail</label>
+        <input id="benutzer" name="benutzer" autocomplete="username" value="alex.muster" />
+        <label for="passwort">Passwort</label>
+        <input id="passwort" name="passwort" type="password" autocomplete="current-password" value="demo" />
+        <button class="btn btn--rot" type="submit">Anmelden (Demo)</button>
+        <p class="login-klein">Im Echtbetrieb: Anmeldung mit persönlichem Konto, Zwei-Faktor-Code per App und Passwort-Zurücksetzen per E-Mail.</p>
+      </form>
+      <p class="hinweis hinweis--demo">Diese Seite ist eine <strong>Vorschau</strong>, wie der Mitgliederbereich künftig aussehen könnte. Jede Eingabe führt in den Demo-Bereich mit erfundenen Beispieldaten. Es werden keine Daten übertragen oder gespeichert.</p>
+    </div>
+  </section>
+</Base>
+<script>
+  // Demo: Passwort nicht in die URL schreiben
+  document.querySelector('[data-login]')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    window.location.href = '/intern/bereich';
+  });
+</script>
+<style>
+  .login-seite { min-height: 70vh; display: grid; place-items: center; padding: 3rem 1rem; background: radial-gradient(circle at 20% 0%, #3a0d14 0%, var(--anthrazit) 55%); }
+  .login-karte { background: #fff; border-radius: 18px; padding: 2.2rem; width: min(100%, 440px); box-shadow: 0 30px 80px rgba(0,0,0,.35); text-align: center; position: relative; overflow: hidden; }
+  .demo-band { margin: -2.2rem -2.2rem 1.6rem; background: repeating-linear-gradient(45deg, var(--gelb), var(--gelb) 12px, #ffd84d 12px, #ffd84d 24px); color: #000; font-weight: 700; letter-spacing: .1em; font-size: .8rem; padding: .5rem; }
+  .login-karte svg { margin: 0 auto .8rem; }
+  .login-text { color: var(--text-2); }
+  .login-form { display: grid; gap: .4rem; text-align: left; margin: 1.5rem 0; }
+  .login-form label { font-weight: 700; font-size: .92rem; margin-top: .5rem; }
+  .login-form input { font: inherit; padding: .75rem .9rem; border: 1.5px solid var(--linie); border-radius: 10px; }
+  .login-form input:focus { border-color: var(--rot); outline: none; box-shadow: 0 0 0 3px var(--rot-hell); }
+  .login-form .btn { justify-content: center; margin-top: 1rem; padding: .95rem; }
+  .login-klein { font-size: .83rem; color: var(--text-2); margin-top: .6rem; }
+  .hinweis--demo { text-align: left; font-size: .9rem; }
+</style>

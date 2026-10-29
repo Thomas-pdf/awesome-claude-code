@@ -16,4 +16,4 @@ Nach einem Begrüssungssekt gab es erst einmal eine zünftige Stärkung aus Wurs
 
 *sp 01/2004*
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](https://www.feuerwehr-wicker.de/index_main.php?page= 117)

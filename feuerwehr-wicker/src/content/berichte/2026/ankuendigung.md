@@ -10,7 +10,7 @@ alteUrl: "https://www.feuerwehr-wicker.de/index_main.php?page=1072"
 
 **Vorankündigung: Tag der offenen Tür bei der Freiwilligen Feuerwehr Wicker am 23. & 24. Mai 2026Am Pfingstwochenende öffnet die Freiwillige Feuerwehr Wicker 1925 e.V. wieder ihre Tore und lädt herzlich zum großen Tag der offenen Tür am Samstag, 23. Mai, und Sonntag, 24. Mai 2026 ein.**
 
-![Flyer 2026](/bilder/archiv/6068_20260430110809_546392.webp)
+[![Flyer 2026](/bilder/archiv/6068_20260430110809_546392.webp)](/aktuelles/2026/flyer-2026)
 
 ### (klicken zum vergrößern)
 

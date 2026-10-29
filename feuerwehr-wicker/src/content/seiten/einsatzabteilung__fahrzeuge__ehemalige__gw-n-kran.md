@@ -65,4 +65,4 @@ Das Fahrzeug wird je nach Einsatzart mit den benötigten Containern und Mitteln 
 
 ![GWN-klein08](/bilder/archiv/332_20081121140355_702415.webp)
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](/einsatzabteilung/fahrzeuge)

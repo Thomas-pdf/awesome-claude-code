@@ -46,4 +46,4 @@ Viele hilfreiche Informationen bieten auch die großen Automobil Clubs:
 [www.adac.de](http://www.adac.de)\
 [www.ace-online.de](http://www.ace-online.de)
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](/buergerinfo/brandschutz)

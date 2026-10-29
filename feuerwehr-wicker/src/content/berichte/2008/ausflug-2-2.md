@@ -52,4 +52,4 @@ Da es viel zu Schade war, nach der Ankunft in Wicker gleich den Abend zu beenden
 
 //: Iss nix bassiert, ist nix bassiert, jesses, jesses, jesses na :// 
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](https://www.feuerwehr-wicker.de/index_main.php?page= 112)

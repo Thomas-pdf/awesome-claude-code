@@ -50,4 +50,4 @@ Unsere jüngsten aktiven Mitglieder sind unsere [Minilöscher](/miniloescher). B
 
 *mk 11/2017*
 
-![pfeil_hoch](/bilder/archiv/471_20081124160153_213650.webp)
+[![pfeil_hoch](/bilder/archiv/471_20081124160153_213650.webp)](/einsatzabteilung)

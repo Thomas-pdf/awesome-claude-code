@@ -50,4 +50,4 @@ Im Namen des gesamten Vorstandes und allen Teilnehmer möchte ich an dieser Stel
 
 ![ausflug05_009](/bilder/archiv/172_20081119191741_386575.webp)
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](https://www.feuerwehr-wicker.de/index_main.php?page= 108)

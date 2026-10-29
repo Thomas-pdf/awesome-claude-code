@@ -84,7 +84,7 @@ Gerne informieren wir Sie auch persönlich.\
 Schauen Sie doch einfach mal vorbei.\
 Jeden Samstag zwischen 13:30 und 17:00 Uhr im Feuerwehrhaus in Wicker.
 
-![pfeil_hoch](/bilder/archiv/471_20081124160153_213650.webp)
+[![pfeil_hoch](/bilder/archiv/471_20081124160153_213650.webp)](#BIhoch)
 
 ![Linie_640.png](/bilder/archiv/305_20081121105850_590319.webp)
 
@@ -94,7 +94,7 @@ Alle wichtigen Informationen finden sie hier:
 
 [Infomaterial nach einem Brandschaden](/downloads/dateien/20081205130527_578703.pdf) 
 
-![pfeil_hoch](/bilder/archiv/471_20081124160153_213650.webp)
+[![pfeil_hoch](/bilder/archiv/471_20081124160153_213650.webp)](#BIhoch)
 
 ![Linie_640.png](/bilder/archiv/305_20081121105850_590319.webp)
 
@@ -140,7 +140,7 @@ Informationsflyer des DKKV (Deutsches Komitee Katastrophenvorsorge e.V.) zur Sel
 
 [Infoflyer "Unwetter über Europa"](/downloads/dateien/20081205130804_190801.pdf)
 
-![pfeil_hoch](/bilder/archiv/471_20081124160153_213650.webp)
+[![pfeil_hoch](/bilder/archiv/471_20081124160153_213650.webp)](#BIhoch)
 
 ![Linie_640.png](/bilder/archiv/305_20081121105850_590319.webp)
 
@@ -163,4 +163,4 @@ Wenn Sie diese Punkte einhalten, haben wir freie Fahrt, und können noch schnell
 
 Deine Feuerwehr hilft... Komm hilf mit...
 
-![pfeil_hoch](/bilder/archiv/471_20081124160153_213650.webp)
+[![pfeil_hoch](/bilder/archiv/471_20081124160153_213650.webp)](#BIhoch)

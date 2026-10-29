@@ -27,4 +27,4 @@ Decken Sie mobile Heizgeräte (Elektrostrahler usw.) niemals ab und achten Sie a
 
 Vergessen Sie nicht, jedes Ihrer Heizgeräte (auch offene Kamine und Ölöfen) vor der Heizsaison zu reinigen.
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](/buergerinfo/brandschutz)

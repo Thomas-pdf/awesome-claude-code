@@ -42,12 +42,12 @@ Mädchen und Jungen im Alter von 10 - 17 Jahren mit Freude und Interesse an der 
 
 Schau einfach beim Übungsdienst vorbei oder melde Dich telefonisch oder per Mail bei einer der folgenden Kontaktpersonen:
 
-![Claudia Hochheimer](/bilder/archiv/4844_20230625134904_734738.webp)
+[![Claudia Hochheimer](/bilder/archiv/4844_20230625134904_734738.webp)](/)
 
-![Marvin Muschiol](/bilder/archiv/4845_20230625134936_546413.webp)
+[![Marvin Muschiol](/bilder/archiv/4845_20230625134936_546413.webp)](/)
 
 Hier findest Du das Anmeldeformular für die Jugendfeuerwehr Wicker:
 
  [2024 - Eintrittserklärung Jugendfeuerwehr](/downloads/dateien/20250101170906_457464.pdf) (180 kb)
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](/mitmachen)

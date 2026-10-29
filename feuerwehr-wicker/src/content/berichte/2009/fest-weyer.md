@@ -33,4 +33,4 @@ Infos zur Freiwilligen Feuerwehr Weyer unter: \
 
 *th 07/2008*
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](/aktuelles)

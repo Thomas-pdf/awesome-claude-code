@@ -36,4 +36,4 @@ Zum Abschluss erhält jeder Teilnehmer eine Urkunde über die Teilnahme, das die
 
 *ch, mu 02/2017*
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](/brandschutzerziehung)

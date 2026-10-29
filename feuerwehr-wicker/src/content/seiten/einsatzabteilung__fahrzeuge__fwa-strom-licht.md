@@ -44,4 +44,4 @@ Geplante Beladung (wird aktuell sukzessive ergänzt):
 
 [Zum Bericht von der offiziellen Übergabe des FwA-Licht](/aktuelles/2025/fahrzeuguebergabe)
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](/einsatzabteilung/fahrzeuge)

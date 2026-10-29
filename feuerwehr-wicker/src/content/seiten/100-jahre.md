@@ -28,16 +28,16 @@ Erleben Sie unvergessliche Momente und besuchen Sie uns auf unseren Veranstaltun
 
 Wir freuen uns auf Ihren Besuch und Ihre Unterstützung.
 
-![FWP](/bilder/archiv/5565_20250324111051_522550.webp)
+[![FWP](/bilder/archiv/5565_20250324111051_522550.webp)](/aktuelles/2025/festweinprobe)
 
-![FGD](/bilder/archiv/5566_20250324111113_703257.webp)
+[![FGD](/bilder/archiv/5566_20250324111113_703257.webp)](/aktuelles/2025/festgottesdienst)
 
-![TdoT](/bilder/archiv/5567_20250324111130_813575.webp)
+[![TdoT](/bilder/archiv/5567_20250324111130_813575.webp)](/aktuelles/2025/tag-der-offenen-tuer)
 
-![OF](/bilder/archiv/5568_20250324111147_847913.webp)
+[![OF](/bilder/archiv/5568_20250324111147_847913.webp)](/aktuelles/2025/oktoberfest)
 
-![ZS](/bilder/archiv/5569_20250324111219_790611.webp)
+[![ZS](/bilder/archiv/5569_20250324111219_790611.webp)](/aktuelles/2025/zapfenstreich)
 
 Die Highlight aus 100 Jahren Feuerwehrgeschichte erfahren Sie in unserer umfangreichen Chronik:
 
-![Chronik](/bilder/archiv/5570_20250324114115_718715.webp)
+[![Chronik](/bilder/archiv/5570_20250324114115_718715.webp)](/100-jahre/chronik)

@@ -42,4 +42,4 @@ Weitere Infos gibt es auch hier:
 
 [http://www.weingut-weidenmuehle.de](http://www.weingut-weidenmuehle.de)
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](https://www.feuerwehr-wicker.de/index_main.php?page= 112)

@@ -1,0 +1,235 @@
+---
+import Base from '../../layouts/Base.astro';
+import { kommendeTermine, datum, wochentag } from '../../lib/inhalte';
+import { DEMO_MITGLIED as M, DEMO_TAUGLICHKEITEN, DEMO_QUALIFIKATIONEN, DEMO_LEHRGAENGE, DEMO_VERTEILER, DEMO_NACHRICHTEN, DEMO_DOKUMENTE } from '../../lib/demo-daten';
+
+// Echte öffentliche Übungstermine als Grundlage für die Dienst-Anmeldung
+const dienste = (await kommendeTermine()).filter((t) => t.data.kategorie === 'einsatzabteilung').slice(0, 8);
+const heute = Date.now();
+const status = (bis: string) => {
+  const t = (new Date(bis).valueOf() - heute) / 864e5;
+  return t < 0 ? 'abgelaufen' : t < 60 ? 'bald' : 'ok';
+};
+const restTage = (bis: string) => Math.round((new Date(bis).valueOf() - heute) / 864e5);
+const fmt = (s: string) => new Date(s).toLocaleDateString('de-DE');
+const warnungen = DEMO_TAUGLICHKEITEN.filter((t) => status(t.gueltigBis) !== 'ok');
+const NAV = [
+  ['uebersicht', 'Übersicht'], ['dienste', 'Dienste & Übungen'], ['lehrgaenge', 'Lehrgänge'],
+  ['tauglichkeiten', 'Meine Tauglichkeiten'], ['nachrichten', 'Nachrichten & Verteiler'], ['dokumente', 'Dokumente'],
+];
+---
+<Base title="Mitgliederbereich (Demo)" noindex>
+  <div class="demo-leiste" role="note"><strong>DEMO</strong> – Prototyp mit erfundenen Beispieldaten. Anmeldungen werden nur in Ihrem Browser simuliert. <a href="/intern">Abmelden</a></div>
+  <div class="container intern">
+    <aside class="intern-nav">
+      <div class="profil">
+        <span class="profil__avatar" aria-hidden="true">{M.vorname[0]}{M.nachname[0]}</span>
+        <div><strong>{M.vorname} {M.nachname}</strong><span>{M.funktion}</span></div>
+      </div>
+      <nav aria-label="Mitgliederbereich">
+        <ul>{NAV.map(([id, label]) => <li><a href={`#${id}`} data-tab={id}>{label}{id === 'tauglichkeiten' && warnungen.length > 0 && <span class="badge">{warnungen.length}</span>}{id === 'nachrichten' && <span class="badge">{DEMO_NACHRICHTEN.filter((n) => n.neu).length}</span>}</a></li>)}</ul>
+      </nav>
+    </aside>
+
+    <div class="intern-inhalt">
+      <section id="uebersicht" data-panel>
+        <h1>Hallo {M.vorname}!</h1>
+        <p class="unter">Abteilung: {M.abteilung} · Mitglied seit {M.eintritt}</p>
+        <div class="kacheln">
+          <a href="#dienste" class="kachel"><strong data-zaehler-zusagen>0</strong><span>Zusagen für kommende Dienste</span></a>
+          <a href="#tauglichkeiten" class:list={['kachel', { 'kachel--warn': warnungen.length }]}><strong>{warnungen.length}</strong><span>Fristen beachten</span></a>
+          <a href="#lehrgaenge" class="kachel"><strong>{DEMO_LEHRGAENGE.filter((l) => l.status === 'offen').length}</strong><span>offene Lehrgangsangebote</span></a>
+          <a href="#nachrichten" class="kachel"><strong>{DEMO_NACHRICHTEN.filter((n) => n.neu).length}</strong><span>neue Rundmails</span></a>
+        </div>
+        {warnungen.length > 0 && (
+          <div class="warnbox">
+            <h2>Bitte beachten</h2>
+            <ul>{warnungen.map((w) => <li><strong>{w.name}</strong>: {status(w.gueltigBis) === 'abgelaufen' ? `abgelaufen seit ${-restTage(w.gueltigBis)} Tagen` : `läuft in ${restTage(w.gueltigBis)} Tagen ab`}</li>)}</ul>
+          </div>
+        )}
+        <h2>Nächster Dienst</h2>
+        {dienste[0] && <p class="naechster"><strong>{wochentag(dienste[0].data.datum)}, {datum(dienste[0].data.datum)}{dienste[0].data.beginn && `, ${dienste[0].data.beginn} Uhr`}</strong> – {dienste[0].data.titel}{dienste[0].data.ort && ` (${dienste[0].data.ort.split(',')[0]})`}</p>}
+      </section>
+
+      <section id="dienste" data-panel>
+        <h2>Dienste &amp; Übungen</h2>
+        <p class="unter">Melde dich zu Übungsdiensten an oder ab. Die Wehrführung sieht so frühzeitig, wer kommt. <em>(Termine: echte Daten aus dem öffentlichen Kalender)</em></p>
+        <ul class="dienstliste">
+          {dienste.map((d) => (
+            <li data-dienst={d.id}>
+              <div class="dienst__datum"><strong>{d.data.datum.getUTCDate()}.{d.data.datum.getUTCMonth() + 1}.</strong><span>{wochentag(d.data.datum)}</span></div>
+              <div class="dienst__info"><strong>{d.data.titel}</strong><span>{d.data.beginn}{d.data.ende && `–${d.data.ende}`} Uhr {d.data.ort && `· ${d.data.ort.split(',')[0]}`}</span>
+                <span class="dienst__stand"><span data-anzahl>{8 + (d.data.titel.length % 9)}</span> Zusagen</span></div>
+              <div class="dienst__knoepfe" role="group" aria-label={`Teilnahme ${d.data.titel}`}>
+                <button type="button" data-antwort="ja" aria-pressed="false">✓ Komme</button>
+                <button type="button" data-antwort="nein" aria-pressed="false">✕ Verhindert</button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section id="lehrgaenge" data-panel>
+        <h2>Lehrgänge &amp; Seminare</h2>
+        <p class="unter">Angebote von Kreis (MTK) und Landesfeuerwehrschule. Bewerbungen gehen an die Wehrführung zur Freigabe.</p>
+        <div class="lehrgaenge">
+          {DEMO_LEHRGAENGE.map((l, i) => (
+            <article class="lehrgang">
+              <span class:list={['status', `status--${l.status}`]} data-lg-status={i}>{l.status === 'offen' ? 'Offen' : l.status === 'angemeldet' ? 'Angemeldet – wartet auf Freigabe' : 'Bestanden'}</span>
+              <h3>{l.titel}</h3>
+              <p>{l.ort}<br />{l.zeitraum.split(' – ').map(fmt).join(' – ')}</p>
+              {l.status === 'offen' && <button type="button" class="btn btn--rot" data-lg={i}>Interesse melden</button>}
+              {l.plaetze > 0 && <p class="klein">{l.plaetze} Plätze für Flörsheim</p>}
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="tauglichkeiten" data-panel>
+        <h2>Meine Tauglichkeiten &amp; Fristen</h2>
+        <p class="unter">Automatische Erinnerung per E-Mail 60 Tage vor Ablauf. Gepflegt durch Atemschutz- bzw. Ausbildungsbeauftragte.</p>
+        <table class="tabelle">
+          <thead><tr><th>Nachweis</th><th>Gültig bis</th><th>Status</th></tr></thead>
+          <tbody>
+            {DEMO_TAUGLICHKEITEN.map((t) => (
+              <tr><td><strong>{t.name}</strong><br /><span class="klein">{t.hinweis}</span></td><td>{fmt(t.gueltigBis)}</td>
+                <td><span class={`ampel ampel--${status(t.gueltigBis)}`}>{status(t.gueltigBis) === 'ok' ? 'gültig' : status(t.gueltigBis) === 'bald' ? `noch ${restTage(t.gueltigBis)} Tage` : 'abgelaufen'}</span></td></tr>
+            ))}
+          </tbody>
+        </table>
+        <h3 style="margin-top:2rem">Ausbildungen</h3>
+        <ul class="quali">{DEMO_QUALIFIKATIONEN.map((q) => <li>{q}</li>)}</ul>
+      </section>
+
+      <section id="nachrichten" data-panel>
+        <h2>Nachrichten &amp; Verteiler</h2>
+        <div class="zwei">
+          <div>
+            <h3>Letzte Rundmails</h3>
+            <ul class="nachrichten">
+              {DEMO_NACHRICHTEN.map((n) => <li class:list={{ neu: n.neu }}><span class="klein">{fmt(n.datum)} · {n.von}</span><strong>{n.betreff}</strong></li>)}
+            </ul>
+          </div>
+          <div>
+            <h3>Meine Verteiler</h3>
+            <ul class="verteiler">
+              {DEMO_VERTEILER.map((v) => (
+                <li><label><input type="checkbox" checked={v.aktiv} disabled={v.pflicht} /> <span><strong>{v.name}</strong>{v.pflicht && ' (Pflicht)'}<br /><span class="klein">{v.beschreibung}</span></span></label></li>
+              ))}
+            </ul>
+            <p class="klein">Zustellung per E-Mail; optional Push-Benachrichtigung aufs Handy.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="dokumente" data-panel>
+        <h2>Dokumente</h2>
+        <ul class="dokumente">{DEMO_DOKUMENTE.map((d) => <li><span class="dok-typ">{d.typ}</span>{d.titel}<span class="klein"> – Demo, nicht verfügbar</span></li>)}</ul>
+      </section>
+    </div>
+  </div>
+</Base>
+
+<script>
+  // Tabs: zeigt jeweils einen Bereich (ohne JavaScript sind alle Bereiche untereinander sichtbar)
+  const panels = [...document.querySelectorAll<HTMLElement>('[data-panel]')];
+  const tabs = [...document.querySelectorAll<HTMLAnchorElement>('[data-tab]')];
+  const zeige = () => {
+    const id = location.hash.slice(1) || 'uebersicht';
+    panels.forEach((p) => (p.hidden = p.id !== id));
+    tabs.forEach((t) => t.setAttribute('aria-current', t.dataset.tab === id ? 'page' : 'false'));
+  };
+  window.addEventListener('hashchange', () => { zeige(); window.scrollTo({ top: 0 }); });
+  zeige();
+
+  // Demo-Zustand nur im Browser (localStorage)
+  const KEY = 'ffw-demo-dienste';
+  let antworten: Record<string, string> = {};
+  try { antworten = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch { /* privat */ }
+  const speichern = () => { try { localStorage.setItem(KEY, JSON.stringify(antworten)); } catch { /* egal */ } };
+  const render = () => {
+    document.querySelectorAll<HTMLElement>('[data-dienst]').forEach((li) => {
+      const a = antworten[li.dataset.dienst!];
+      li.querySelectorAll<HTMLButtonElement>('[data-antwort]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.antwort === a)));
+      const z = li.querySelector<HTMLElement>('[data-anzahl]');
+      if (z) { z.dataset.basis ??= z.textContent!; z.textContent = String(Number(z.dataset.basis) + (a === 'ja' ? 1 : 0)); }
+      li.dataset.antwort = a ?? '';
+    });
+    const n = Object.values(antworten).filter((x) => x === 'ja').length;
+    document.querySelectorAll('[data-zaehler-zusagen]').forEach((e) => (e.textContent = String(n)));
+  };
+  document.querySelectorAll<HTMLButtonElement>('[data-antwort]').forEach((b) => b.addEventListener('click', () => {
+    const id = b.closest<HTMLElement>('[data-dienst]')!.dataset.dienst!;
+    antworten[id] = antworten[id] === b.dataset.antwort ? '' : b.dataset.antwort!;
+    speichern(); render();
+  }));
+  document.querySelectorAll<HTMLButtonElement>('[data-lg]').forEach((b) => b.addEventListener('click', () => {
+    const s = document.querySelector<HTMLElement>(`[data-lg-status="${b.dataset.lg}"]`);
+    if (s) { s.textContent = 'Interesse gemeldet – wartet auf Freigabe'; s.className = 'status status--angemeldet'; }
+    b.remove();
+  }));
+  render();
+</script>
+
+<style>
+  .demo-leiste { background: var(--gelb); color: #000; text-align: center; padding: .55rem 1rem; font-size: .93rem; }
+  .demo-leiste a { color: #000; font-weight: 700; margin-left: .5rem; }
+  .intern { display: grid; gap: 2rem; padding-block: 2.5rem 4rem; grid-template-columns: minmax(0, 1fr); }
+  @media (min-width: 900px) { .intern { grid-template-columns: 270px minmax(0, 1fr); } .intern-nav { position: sticky; top: 100px; align-self: start; } }
+  .profil { display: flex; gap: .8rem; align-items: center; padding: 1rem; background: var(--anthrazit); color: #fff; border-radius: var(--radius); margin-bottom: 1rem; }
+  .profil__avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--rot); display: grid; place-items: center; font-weight: 700; font-family: var(--font-head); font-size: 1.3rem; flex: none; }
+  .profil span { display: block; font-size: .82rem; color: #b8bdc2; }
+  .intern-nav ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .2rem; }
+  .intern-nav a { display: flex; justify-content: space-between; align-items: center; padding: .7rem .9rem; border-radius: 10px; text-decoration: none; color: var(--text); font-weight: 600; }
+  .intern-nav a:hover { background: var(--flaeche); }
+  .intern-nav a[aria-current='page'] { background: var(--rot-hell); color: var(--rot); }
+  @media (max-width: 899px) { .intern-nav ul { display: flex; overflow-x: auto; gap: .4rem; } .intern-nav a { white-space: nowrap; border: 1px solid var(--linie); } }
+  .badge { background: var(--rot); color: #fff; border-radius: 999px; font-size: .75rem; padding: .05rem .5rem; margin-left: .4rem; }
+  .unter { color: var(--text-2); }
+  .klein { font-size: .85rem; color: var(--text-2); }
+  .kacheln { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+  .kachel { padding: 1.2rem; border-radius: var(--radius); border: 1px solid var(--linie); text-decoration: none; color: var(--text); border-top: 4px solid var(--anthrazit); }
+  .kachel strong { display: block; font-family: var(--font-head); font-size: 2.4rem; line-height: 1; }
+  .kachel span { font-size: .9rem; color: var(--text-2); }
+  .kachel--warn { border-top-color: var(--rot); }
+  .warnbox { background: #fff1f2; border: 1px solid #f6b4bd; border-radius: var(--radius); padding: 1rem 1.3rem; margin-bottom: 1.5rem; }
+  .warnbox h2 { font-size: 1.3rem; color: var(--rot); }
+  .naechster { font-size: 1.1rem; }
+  .dienstliste { list-style: none; padding: 0; display: grid; gap: .6rem; }
+  .dienstliste li { display: grid; grid-template-columns: 70px 1fr auto; gap: 1rem; align-items: center; border: 1px solid var(--linie); border-radius: var(--radius-s); padding: .8rem 1rem; border-left: 5px solid var(--linie); }
+  .dienstliste li[data-antwort='ja'] { border-left-color: var(--gruen); }
+  .dienstliste li[data-antwort='nein'] { border-left-color: var(--rot); opacity: .75; }
+  .dienst__datum { text-align: center; font-family: var(--font-head); }
+  .dienst__datum strong { display: block; font-size: 1.4rem; }
+  .dienst__info span { display: block; font-size: .9rem; color: var(--text-2); }
+  .dienst__knoepfe { display: flex; gap: .4rem; }
+  .dienst__knoepfe button { font: 600 .9rem var(--font-body); padding: .5rem .8rem; border-radius: 999px; border: 1.5px solid var(--linie); background: #fff; cursor: pointer; }
+  .dienst__knoepfe [data-antwort='ja'][aria-pressed='true'] { background: var(--gruen); border-color: var(--gruen); color: #fff; }
+  .dienst__knoepfe [data-antwort='nein'][aria-pressed='true'] { background: var(--rot); border-color: var(--rot); color: #fff; }
+  @media (max-width: 640px) { .dienstliste li { grid-template-columns: 56px 1fr; } .dienst__knoepfe { grid-column: 1 / -1; } .dienst__knoepfe button { flex: 1; } }
+  .lehrgaenge { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); }
+  .lehrgang { border: 1px solid var(--linie); border-radius: var(--radius); padding: 1.2rem; display: flex; flex-direction: column; gap: .4rem; }
+  .lehrgang h3 { margin: .3rem 0 0; font-size: 1.3rem; }
+  .lehrgang p { margin: 0; font-size: .95rem; }
+  .lehrgang .btn { align-self: flex-start; margin-top: .5rem; padding: .55rem 1rem; font-size: .9rem; }
+  .status { align-self: flex-start; font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; padding: .2rem .6rem; border-radius: 999px; background: var(--flaeche); }
+  .status--angemeldet { background: #fff3cd; color: #7a5a00; }
+  .status--bestanden { background: #e3f4ea; color: var(--gruen); }
+  .ampel { display: inline-block; padding: .2rem .7rem; border-radius: 999px; font-weight: 700; font-size: .85rem; white-space: nowrap; }
+  .ampel--ok { background: #e3f4ea; color: #146b3a; }
+  .ampel--bald { background: #fff3cd; color: #7a5a00; }
+  .ampel--abgelaufen { background: #fde2e5; color: var(--rot-dunkel); }
+  .quali { display: flex; flex-wrap: wrap; gap: .5rem; list-style: none; padding: 0; }
+  .quali li { background: var(--flaeche); border-radius: 999px; padding: .3rem .8rem; font-size: .92rem; }
+  .zwei { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+  .nachrichten, .verteiler, .dokumente { list-style: none; padding: 0; margin: 0; display: grid; gap: .5rem; }
+  .nachrichten li { border: 1px solid var(--linie); border-radius: var(--radius-s); padding: .7rem .9rem; display: grid; }
+  .nachrichten li.neu { border-left: 4px solid var(--rot); }
+  .verteiler label { display: flex; gap: .7rem; align-items: flex-start; padding: .6rem 0; border-bottom: 1px solid var(--linie); cursor: pointer; }
+  .verteiler input { width: 20px; height: 20px; margin-top: .2rem; accent-color: var(--rot); }
+  .dokumente li { border: 1px solid var(--linie); border-radius: var(--radius-s); padding: .8rem 1rem; display: flex; gap: .8rem; align-items: center; }
+  .dok-typ { background: var(--rot); color: #fff; font-size: .72rem; font-weight: 700; padding: .2rem .45rem; border-radius: 5px; }
+  [data-panel] { scroll-margin-top: 110px; }
+  [data-panel] + [data-panel] { margin-top: 3rem; }
+  [data-panel][hidden] { display: none; }
+</style>

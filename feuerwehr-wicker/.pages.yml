@@ -1,0 +1,96 @@
+# Konfiguration für Pages CMS (https://pagescms.org) – Inhaltspflege im Browser.
+# WICHTIG: Liegt die Website später in einem eigenen Repository, das Präfix
+# "feuerwehr-wicker/" überall entfernen und diese Datei ins Hauptverzeichnis legen.
+media:
+  input: feuerwehr-wicker/public/bilder/neu
+  output: /bilder/neu
+  categories: [image]
+
+content:
+  - name: einsaetze
+    label: Einsätze
+    type: collection
+    path: feuerwehr-wicker/src/content/einsaetze
+    subfolders: true
+    filename: "{year}/{year}-{primary}.md"
+    view:
+      fields: [nummer, datum, stichwort, einsatzort]
+      sort: [datum]
+      default: { sort: datum, order: desc }
+    fields:
+      - { name: nummer, label: "Einsatznummer (z. B. B_2026/69)", type: string, required: true }
+      - { name: datum, label: Datum, type: date, required: true }
+      - { name: uhrzeit, label: "Alarmzeit (hh:mm)", type: string, pattern: "^\\d\\d:\\d\\d$" }
+      - { name: art, label: Einsatzart, type: select, options: { values: [Brand, Hilfeleistung, Sonstiges] }, default: Brand }
+      - { name: stichwort, label: "Alarmstichwort (z. B. F 2 - Brand im Gebäude)", type: string, required: true }
+      - { name: einsatzort, label: "Einsatzstelle (ohne Hausnummer!)", type: string }
+      - { name: alarmierung, label: Alarmierung, type: string, default: FAE }
+      - { name: dauerMinuten, label: "Dauer in Minuten", type: number }
+      - { name: fahrzeuge, label: "Eingesetzte Fahrzeuge", type: string }
+      - { name: kraefte, label: "Einsatzkräfte FF Wicker", type: number }
+      - { name: weitereKraefte, label: "Weitere Kräfte", type: string }
+      - { name: bilder, label: "Fotos (keine erkennbaren Verletzten, keine Kennzeichen!)", type: image, list: true }
+      - { name: body, label: Einsatzbericht, type: rich-text }
+
+  - name: berichte
+    label: Berichte / Aktuelles
+    type: collection
+    path: feuerwehr-wicker/src/content/berichte
+    subfolders: true
+    filename: "{year}/{primary}.md"
+    view:
+      fields: [title, date, bereich]
+      default: { sort: date, order: desc }
+    fields:
+      - { name: title, label: Überschrift, type: string, required: true }
+      - { name: date, label: Datum, type: date, required: true }
+      - name: bereich
+        label: Bereich
+        type: select
+        options: { values: [einsatzabteilung, jugendfeuerwehr, minis, verein, neubau, jubilaeum, allgemein] }
+        default: einsatzabteilung
+      - { name: teaser, label: "Kurztext für die Übersicht (1–2 Sätze)", type: text }
+      - { name: bild, label: "Titelbild", type: image }
+      - { name: entwurf, label: "Entwurf (noch nicht veröffentlichen)", type: boolean, default: false }
+      - { name: body, label: Text, type: rich-text }
+
+  - name: termine
+    label: Termine
+    type: collection
+    path: feuerwehr-wicker/src/content/termine
+    subfolders: true
+    filename: "{year}/{year}-{month}-{day}-{primary}.md"
+    view:
+      fields: [titel, datum, beginn, kategorie]
+      default: { sort: datum, order: desc }
+    fields:
+      - { name: titel, label: Titel, type: string, required: true }
+      - { name: datum, label: Datum, type: date, required: true }
+      - { name: beginn, label: "Beginn (hh:mm)", type: string }
+      - { name: ende, label: "Ende (hh:mm)", type: string }
+      - { name: ort, label: Ort, type: string }
+      - name: kategorie
+        label: Gruppe
+        type: select
+        options: { values: [einsatzabteilung, jugendfeuerwehr, minis, verein, allgemein] }
+        default: einsatzabteilung
+      - { name: oeffentlich, label: "Öffentlich anzeigen", type: boolean, default: true }
+      - { name: body, label: Notiz, type: text }
+
+  - name: seiten
+    label: Feste Seiten
+    type: collection
+    path: feuerwehr-wicker/src/content/seiten
+    view:
+      fields: [title, pfad]
+    fields:
+      - { name: title, label: Titel, type: string, required: true }
+      - { name: pfad, label: "Adresse (z. B. /verein/vorstand) – nicht ändern ohne Rücksprache", type: string, required: true }
+      - { name: bereich, label: Bereich, type: string }
+      - { name: stand, label: Stand, type: date }
+      - { name: reihenfolge, label: Reihenfolge, type: number }
+      - { name: eltern, label: "Übergeordnete Seite", type: string }
+      - { name: beschreibung, label: "Beschreibung für Google (max. 160 Zeichen)", type: text }
+      - { name: bild, label: Bild, type: image }
+      - { name: body, label: Inhalt, type: rich-text }
+

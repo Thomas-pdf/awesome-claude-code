@@ -31,14 +31,14 @@ Neben einer fundierten Feuerwehrausbildung (Gruppenführer ist anzustreben), wer
 
 ### 1994 bis 2004
 
-![Mz2](/bilder/archiv/565_20081206151605_850613.webp)
+[![Mz2](/bilder/archiv/565_20081206151605_850613.webp)](/einsatzabteilung/fahrzeuge/ehemalige/krad-mz)
 
 ### 2004 bis 2020
 
-![Kräder](/bilder/archiv/3990_20200131161120_620127.webp)
+[![Kräder](/bilder/archiv/3990_20200131161120_620127.webp)](/einsatzabteilung/fahrzeuge/ehemalige/krad-yamaha)
 
 ### ab 2020
 
-![Krad 2 BMW F850](/bilder/archiv/4110_20201008154829_888677.webp)
+[![Krad 2 BMW F850](/bilder/archiv/4110_20201008154829_888677.webp)](/einsatzabteilung/fahrzeuge/kraeder-tel-mtk/bmw-f850-gs)
 
 *en 10/2020*

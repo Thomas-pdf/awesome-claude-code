@@ -38,4 +38,4 @@ Aus Wicker beteiligten sich in diesem Jahr insgesamt 13 Kameraden am Prüftag. H
 
 *mk 3/2014*
 
-![pfeil_hoch](/bilder/archiv/471_20081124160153_213650.webp)
+[![pfeil_hoch](/bilder/archiv/471_20081124160153_213650.webp)](/einsatzabteilung)

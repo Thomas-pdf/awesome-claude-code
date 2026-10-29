@@ -36,6 +36,6 @@ Schauen Sie doch einmal bei uns vorbei und informieren sich über die Arbeit der
 
 Wir stehen Ihnen gerne zur Verfügung:
 
-![Markus Kaschel](/bilder/archiv/4311_20210709105931_613587.webp)
+[![Markus Kaschel](/bilder/archiv/4311_20210709105931_613587.webp)](/)
 
-![Marcel Ullrich](/bilder/archiv/4312_20210709110024_551890.webp)
+[![Marcel Ullrich](/bilder/archiv/4312_20210709110024_551890.webp)](/)

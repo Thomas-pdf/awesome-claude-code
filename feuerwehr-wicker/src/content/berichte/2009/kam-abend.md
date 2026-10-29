@@ -45,4 +45,4 @@ Nach einem solch gelungenen Abend wurde munter bis in die frühen Morgenstunden 
 
 *th 09/2008*
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](/aktuelles)

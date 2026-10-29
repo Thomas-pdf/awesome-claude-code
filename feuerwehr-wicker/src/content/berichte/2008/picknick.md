@@ -55,4 +55,4 @@ Und der Abbau war auch sehr schnell abgefertigt. So konnten die Helfer in gemüt
 
 *sp 05/2006*
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](https://www.feuerwehr-wicker.de/index_main.php?page= 104)

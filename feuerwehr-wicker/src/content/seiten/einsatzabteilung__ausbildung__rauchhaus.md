@@ -29,4 +29,4 @@ Um Erfahrungen im Bereich der Belüftung zu sammeln, können die unterschiedlich
 
 *ah, st 06/2009*
 
-![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)
+[![pfeil_links](/bilder/archiv/474_20081124160338_530738.webp)](/einsatzabteilung/ausbildung/ausbildungsmaterial)
