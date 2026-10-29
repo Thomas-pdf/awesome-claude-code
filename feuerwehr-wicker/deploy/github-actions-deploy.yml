@@ -1,0 +1,29 @@
+# Automatischer Bau + Upload per FTP(S) zu einem klassischen Webhoster (z. B. ALL-INKL, Hetzner, IONOS).
+# Einrichtung: diese Datei nach .github/workflows/deploy.yml kopieren und in GitHub unter
+# Settings → Secrets and variables → Actions die Geheimnisse FTP_SERVER, FTP_USER, FTP_PASSWORD anlegen.
+name: Website bauen und veröffentlichen
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: '17 3 * * *'   # täglich neu bauen, damit "kommende Termine" aktuell bleiben
+concurrency: deploy
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - run: npm run build
+      - name: Hochladen per FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./dist/
+          server-dir: ./

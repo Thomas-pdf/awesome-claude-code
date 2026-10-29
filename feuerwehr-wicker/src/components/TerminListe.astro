@@ -7,7 +7,7 @@ const mon = (d: Date) => new Intl.DateTimeFormat('de-DE', { month: 'short', time
 ---
 <ol class="terminliste">
   {liste.map((t) => (
-    <li class={`termin termin--${t.data.kategorie}`} data-kategorie={t.data.kategorie}>
+    <li class={`termin termin--${t.data.kategorie}`} data-kategorie={t.data.kategorie} data-termin-datum={t.data.datum.toISOString().slice(0, 10)}>
       <div class="termin__datum" aria-hidden="true">
         <span class="termin__wt">{wochentag(t.data.datum)}</span>
         <span class="termin__tag">{tag(t.data.datum)}</span>
@@ -26,6 +26,13 @@ const mon = (d: Date) => new Intl.DateTimeFormat('de-DE', { month: 'short', time
     </li>
   ))}
 </ol>
+<script>
+  // Vergangene Termine ausblenden, falls die Seite seit dem letzten Bau älter geworden ist
+  const heute = new Date().toISOString().slice(0, 10);
+  document.querySelectorAll<HTMLElement>('[data-termin-datum]').forEach((li) => {
+    if (!location.pathname.startsWith('/termine/archiv') && li.dataset.terminDatum! < heute) li.remove();
+  });
+</script>
 <style>
   .terminliste { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; }
   .termin { display: grid; grid-template-columns: 64px 1fr; gap: 1rem; align-items: center; padding: .7rem .9rem; border-radius: var(--radius-s); background: #fff; border: 1px solid var(--linie); border-left: 5px solid var(--c-allgemein); }
