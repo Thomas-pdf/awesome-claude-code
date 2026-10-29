@@ -36,7 +36,7 @@ Jeden Montag zwischen 16:30 und 18:00 Uhr findet die Gruppenstunde im Feuerwehrh
 
 ### Anmeldung Kinderfeuerwehr:
 
- [2024 - Eintrittserklärung Minilöscher](/downloads/dateien/20250101171059_248359.pdf) (162 kb)
+ 2024 - Eintrittserklärung Minilöscher (auf der alten Website defekt – bitte als PDF neu hinterlegen)
 
 ### Ordnung für Kindergruppen - Feuerwehren Stadt Flörsheim am Main:
 

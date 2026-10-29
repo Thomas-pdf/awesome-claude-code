@@ -18,7 +18,7 @@
   --flaeche: #f6f5f2;
   --weiss: #ffffff;
   --gelb: #ffc400;
-  --gruen: #1f8a4c;
+  --gruen: #17773f;
   --blau: #1f5fae;
   --radius: 14px;
   --radius-s: 8px;
@@ -31,10 +31,10 @@
   /* Bereichsfarben */
   --c-einsatzabteilung: var(--rot);
   --c-jugendfeuerwehr: #1f5fae;
-  --c-minis: #1f8a4c;
-  --c-verein: #b06d00;
+  --c-minis: #17773f;
+  --c-verein: #8f5800;
   --c-neubau: #5b4bb7;
-  --c-jubilaeum: #a57c00;
+  --c-jubilaeum: #7a5c00;
   --c-allgemein: #4b535c;
 }
 

@@ -24,7 +24,6 @@ Die Jugendfeuerwehr Wicker wurde mit dem Löschfahrzeug 8/6 und einem Mannschaft
 
 ![5](/bilder/archiv/5344_20240916192641_351330.webp)
 
-![6](/bilder/archiv/5345_20240916192707_248617.webp)
 
 ![7](/bilder/archiv/5346_20240916192736_484709.webp)
 

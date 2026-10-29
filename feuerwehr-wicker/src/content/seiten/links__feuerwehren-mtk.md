@@ -51,7 +51,7 @@ alteUrl: "https://www.feuerwehr-wicker.de/index_main.php?page=185"
 
  Feuerwehren der Stadt Hofheim am Taunus
 
-- [Freiwillige Feuerwehr Hofheim\](http://www.feuerwehr-hofheim.de/)
+- [Freiwillige Feuerwehr Hofheim](http://www.feuerwehr-hofheim.de/)
 - [Freiwillige Feuerwehr Hofheim - Diedenbergen](http://www.feuerwehr-diedenbergen.de/)
 - [Freiwillige Feuerwehr Hofheim - Wildsachsen](http://www.feuerwehr-wildsachsen.de/)
 - [Freiwillige Feuerwehr Hofheim - Langenhain](http://www.feuerwehr-langenhain.de/)

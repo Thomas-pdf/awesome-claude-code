@@ -230,6 +230,7 @@ def convert_html(fragment):
     md = re.sub(r"(?m)\\\n(?=\s*\n)", "\n", md)
     md = re.sub(r"(?m)\\$(?=\Z)", "", md)
     md = re.sub(r"\n{3,}", "\n\n", md)
+    md = md.replace("\\](", "](")
     md = re.sub(r"\*\*\s*\*\*", "", md)
     md = re.sub(r"(?m)^\*\s*\*$", "", md)
     return md.strip()
