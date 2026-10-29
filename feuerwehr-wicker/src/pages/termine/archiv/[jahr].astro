@@ -1,0 +1,19 @@
+---
+import Base from '../../../layouts/Base.astro';
+import PageHero from '../../../components/PageHero.astro';
+import TerminListe from '../../../components/TerminListe.astro';
+import { termine, monatJahr } from '../../../lib/inhalte';
+export async function getStaticPaths() {
+  return [...new Set((await termine()).map((t) => t.data.datum.getUTCFullYear()))].map((j) => ({ params: { jahr: String(j) } }));
+}
+const jahr = Number(Astro.params.jahr);
+const liste = (await termine()).filter((t) => t.data.datum.getUTCFullYear() === jahr);
+const gruppen = new Map<string, typeof liste>();
+for (const t of liste) gruppen.set(monatJahr(t.data.datum), [...(gruppen.get(monatJahr(t.data.datum)) ?? []), t]);
+---
+<Base title={`Termine ${jahr}`} noindex>
+  <PageHero titel={`Terminarchiv ${jahr}`} krumen={[{ label: 'Termine', href: '/termine' }, { label: `Archiv ${jahr}` }]} text={`${liste.length} Termine im Jahr ${jahr}.`} />
+  <div class="container section">
+    {[...gruppen].map(([m, ts]) => (<section style="margin-bottom:2.5rem"><h2>{m}</h2><TerminListe liste={ts} /></section>))}
+  </div>
+</Base>

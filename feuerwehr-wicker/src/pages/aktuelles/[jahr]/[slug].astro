@@ -1,0 +1,70 @@
+---
+import { render } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import PageHero from '../../../components/PageHero.astro';
+import BerichtKarte from '../../../components/BerichtKarte.astro';
+import { berichte, bereichName, datumLang, type Bericht } from '../../../lib/inhalte';
+
+export async function getStaticPaths() {
+  const alle = await berichte();
+  return alle.map((b, i) => {
+    const [jahr, slug] = b.id.split('/');
+    return { params: { jahr, slug }, props: { b, neuer: alle[i - 1], aelter: alle[i + 1] } };
+  });
+}
+interface Props { b: Bericht; neuer?: Bericht; aelter?: Bericht }
+const { b, neuer, aelter } = Astro.props;
+const { Content } = await render(b);
+const verwandt = (await berichte()).filter((x) => x.data.bereich === b.data.bereich && x.id !== b.id).slice(0, 3);
+const teilenUrl = new URL(`/aktuelles/${b.id}`, Astro.site).toString();
+---
+<Base title={b.data.title} description={b.data.teaser?.slice(0, 160)} image={b.data.bild} type="article" datum={b.data.date}>
+  <PageHero titel={b.data.title} krumen={[{ label: 'Aktuelles', href: '/aktuelles' }, { label: bereichName(b.data.bereich), href: `/aktuelles/bereich/${b.data.bereich}` }, { label: b.data.title }]}>
+    <p class="artikel-meta">
+      <span class={`tag tag--${b.data.bereich}`}>{bereichName(b.data.bereich)}</span>
+      <time datetime={b.data.date.toISOString()}>{datumLang(b.data.date)}</time>
+    </p>
+  </PageHero>
+  <div class="container layout-seite">
+    <article class="prose" data-pagefind-body>
+      <Content />
+      {b.data.alteId && <p class="quelle">Übernommen von der bisherigen Homepage (Seite {b.data.alteId}).</p>}
+    </article>
+    <aside class="seitenleiste">
+      <div class="box">
+        <h2>Teilen</h2>
+        <p class="teilen">
+          <a href={`https://wa.me/?text=${encodeURIComponent(b.data.title + ' ' + teilenUrl)}`} rel="noopener" target="_blank">WhatsApp</a>
+          <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(teilenUrl)}`} rel="noopener" target="_blank">Facebook</a>
+          <a href={`mailto:?subject=${encodeURIComponent(b.data.title)}&body=${encodeURIComponent(teilenUrl)}`}>E-Mail</a>
+        </p>
+      </div>
+      <nav class="box" aria-label="Weitere Berichte">
+        <h2>Weiterlesen</h2>
+        <ul>
+          {neuer && <li><a href={`/aktuelles/${neuer.id}`}>← Neuer: {neuer.data.title}</a></li>}
+          {aelter && <li><a href={`/aktuelles/${aelter.id}`}>Älter: {aelter.data.title} →</a></li>}
+          <li><a href={`/aktuelles/bereich/${b.data.bereich}`}>Alle Berichte: {bereichName(b.data.bereich)}</a></li>
+        </ul>
+      </nav>
+      <div class="box box--rot">
+        <h2>Lust mitzumachen?</h2>
+        <p>Wir suchen Verstärkung – ob Einsatzabteilung, Jugendfeuerwehr oder Minilöscher.</p>
+        <a class="btn btn--hell" href="/mitmachen">Mehr erfahren</a>
+      </div>
+    </aside>
+  </div>
+  {verwandt.length > 0 && (
+    <section class="section section--grau">
+      <div class="container">
+        <h2>Mehr aus dem Bereich {bereichName(b.data.bereich)}</h2>
+        <div class="grid grid-3">{verwandt.map((v) => <BerichtKarte b={v} />)}</div>
+      </div>
+    </section>
+  )}
+</Base>
+<style>
+  .artikel-meta { display: flex; gap: .8rem; align-items: center; margin-top: .6rem !important; color: #cfd2d6; }
+  .quelle { font-size: .85rem; color: var(--text-2); border-top: 1px solid var(--linie); padding-top: 1rem; margin-top: 3rem; }
+  .teilen { display: flex; gap: 1rem; flex-wrap: wrap; margin: 0; }
+</style>

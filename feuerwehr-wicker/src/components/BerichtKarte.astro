@@ -1,0 +1,24 @@
+---
+import { type Bericht, berichtUrl, bereichName, datum } from '../lib/inhalte';
+interface Props { b: Bericht; gross?: boolean }
+const { b, gross = false } = Astro.props;
+---
+<article class:list={['karte', { 'karte--gross': gross }]}>
+  <div class="karte__bild">
+    {b.data.bild
+      ? <img src={b.data.bild} alt="" loading="lazy" decoding="async" width="640" height="400" />
+      : <div class="karte__platzhalter" aria-hidden="true"><svg viewBox="0 0 64 64" width="56"><path d="M32 3 7 11v19c0 15.5 10.6 26.5 25 31 14.4-4.5 25-15.5 25-31V11L32 3Z" fill="currentColor"/></svg></div>}
+  </div>
+  <div class="karte__body">
+    <div class="meta">
+      <span class={`tag tag--${b.data.bereich}`}>{bereichName(b.data.bereich)}</span>
+      <time datetime={b.data.date.toISOString()}>{datum(b.data.date)}</time>
+    </div>
+    <h3 class="karte__titel"><a href={berichtUrl(b)}>{b.data.title}</a></h3>
+    {b.data.teaser && <p class="karte__text">{b.data.teaser.length > 150 ? b.data.teaser.slice(0, 150).replace(/\s\S*$/, '') + ' …' : b.data.teaser}</p>}
+  </div>
+</article>
+<style>
+  .karte__platzhalter { width: 100%; height: 100%; display: grid; place-items: center; color: #e2dfd9; background: linear-gradient(135deg, #f6f5f2, #ece9e3); }
+  .karte--gross .karte__titel { font-size: 1.8rem; }
+</style>

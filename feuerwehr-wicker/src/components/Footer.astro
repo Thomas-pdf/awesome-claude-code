@@ -1,0 +1,76 @@
+---
+import { SITE, UEBUNGSZEITEN } from '../lib/site';
+import { FOOTER_LINKS } from '../lib/navigation';
+import Logo from './Logo.astro';
+const jahr = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="footer-notruf">
+    <div class="container footer-notruf__inner">
+      <div>
+        <p class="footer-notruf__label">Im Notfall</p>
+        <p class="footer-notruf__nummer"><a href="tel:112">112</a></p>
+      </div>
+      <p class="footer-notruf__text">Feuer, Unfall, medizinischer Notfall: Wählen Sie die <strong>112</strong> – kostenlos, ohne Vorwahl, aus jedem Netz. Die Leitstelle alarmiert die Feuerwehr. Polizei: <a href="tel:110">110</a></p>
+    </div>
+  </div>
+  <div class="container footer-grid">
+    <div class="footer-spalte footer-spalte--marke">
+      <Logo hell />
+      <p>Ehrenamtlich im Einsatz für Wicker, Flörsheim und den Main-Taunus-Kreis – seit {SITE.gegruendet}.</p>
+      <a class="btn btn--rot" href="/mitmachen">Werde Teil des Teams</a>
+    </div>
+    <div class="footer-spalte">
+      <h2>Feuerwehrhaus</h2>
+      <address>
+        {SITE.name}<br />
+        {SITE.strasse}<br />
+        {SITE.plz} {SITE.ort}-{SITE.ortsteil}
+      </address>
+      <p>Tel. <a href={`tel:${SITE.telefonLink}`}>{SITE.telefon}</a> (keine Notrufe)<br />
+        <a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+    </div>
+    <div class="footer-spalte">
+      <h2>Übungszeiten</h2>
+      <ul class="footer-liste">
+        {UEBUNGSZEITEN.map((u) => <li><a href={u.link}>{u.gruppe}</a><span>{u.zeit}</span></li>)}
+      </ul>
+    </div>
+    <div class="footer-spalte">
+      <h2>Service</h2>
+      <ul class="footer-links">
+        <li><a href="/termine">Termine</a></li>
+        <li><a href="/termine.ics">Kalender abonnieren (iCal)</a></li>
+        <li><a href="/rss.xml">RSS-Feed</a></li>
+        <li><a href={SITE.facebook} rel="noopener" target="_blank">Facebook</a></li>
+        {FOOTER_LINKS.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+      </ul>
+    </div>
+  </div>
+  <div class="footer-unten">
+    <div class="container footer-unten__inner">
+      <span>© {jahr} {SITE.verein}</span>
+      <span>Keine Cookies · Keine Tracker · Schriften lokal</span>
+    </div>
+  </div>
+</footer>
+<style>
+  .site-footer { background: var(--anthrazit); color: #c5c9cd; margin-top: auto; }
+  .site-footer a { color: #fff; }
+  .footer-notruf { background: var(--rot); color: #fff; }
+  .footer-notruf__inner { display: flex; align-items: center; gap: 2rem; padding-block: 1.6rem; flex-wrap: wrap; }
+  .footer-notruf__label { font-family: var(--font-head); text-transform: uppercase; letter-spacing: .15em; font-weight: 700; margin: 0; font-size: .95rem; }
+  .footer-notruf__nummer { margin: 0; font-family: var(--font-head); font-size: 4rem; font-weight: 700; line-height: .9; }
+  .footer-notruf__nummer a { text-decoration: none; }
+  .footer-notruf__text { margin: 0; max-width: 62ch; font-size: 1.05rem; }
+  .footer-grid { display: grid; gap: 2.5rem; padding-block: 3.5rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .footer-spalte h2 { color: #fff; font-size: 1.25rem; text-transform: uppercase; letter-spacing: .08em; }
+  .footer-spalte p, .footer-spalte address { font-style: normal; font-size: .98rem; }
+  .footer-spalte--marke p { margin-top: 1rem; }
+  .footer-liste, .footer-links { list-style: none; padding: 0; margin: 0; display: grid; gap: .55rem; font-size: .96rem; }
+  .footer-liste span { display: block; color: #9ba1a7; font-size: .9rem; }
+  .footer-links a, .footer-liste a { text-decoration: none; }
+  .footer-links a:hover, .footer-liste a:hover { text-decoration: underline; }
+  .footer-unten { border-top: 1px solid #2e3237; font-size: .88rem; }
+  .footer-unten__inner { display: flex; justify-content: space-between; gap: 1rem; padding-block: 1.2rem; flex-wrap: wrap; color: #8d949b; }
+</style>

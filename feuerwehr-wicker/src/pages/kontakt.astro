@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { SITE } from '../lib/site';
+const osm = `https://www.openstreetmap.org/?mlat=${SITE.geo.lat}&mlon=${SITE.geo.lon}#map=17/${SITE.geo.lat}/${SITE.geo.lon}`;
+---
+<Base title="Kontakt" description="So erreichen Sie die Freiwillige Feuerwehr Flörsheim-Wicker: Feuerwehrhaus Flörsheimer Str. 2, 65439 Flörsheim-Wicker, Telefon und E-Mail.">
+  <PageHero titel="Kontakt" eyebrow="So erreichen Sie uns" text="Für Notfälle gilt immer: 112. Für alle anderen Anliegen sind wir gerne per E-Mail oder Telefon für Sie da." krumen={[{ label: 'Kontakt' }]} />
+  <div class="container section">
+    <div class="notfall-hinweis" role="note">
+      <strong>Notfall?</strong> Rufen Sie sofort <a href="tel:112">112</a> an. E-Mails und das Telefon im Feuerwehrhaus sind <u>nicht</u> ständig besetzt.
+    </div>
+    <div class="kontakt-grid">
+      <div class="box">
+        <h2>Feuerwehrhaus</h2>
+        <address>{SITE.name}<br />{SITE.strasse}<br />{SITE.plz} {SITE.ort}-{SITE.ortsteil}</address>
+        <p>Telefon: <a href={`tel:${SITE.telefonLink}`}>{SITE.telefon}</a><br />Fax: {SITE.fax}<br />E-Mail: <a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+        <p><a class="link-pfeil" href={osm} rel="noopener" target="_blank">Auf OpenStreetMap anzeigen</a></p>
+      </div>
+      <div class="box">
+        <h2>Ansprechpartner</h2>
+        <ul>
+          <li><a href="/kontakt/einsatzabteilung">Wehrführung / Einsatzabteilung</a></li>
+          <li><a href="/kontakt/jugendfeuerwehr">Jugendfeuerwehr</a></li>
+          <li><a href="/kontakt/kinderfeuerwehr">Kinderfeuerwehr (Minilöscher)</a></li>
+          <li><a href="/kontakt/verein">Feuerwehrverein (Vorstand)</a></li>
+        </ul>
+      </div>
+      <div class="box">
+        <h2>Neues Feuerwehrhaus</h2>
+        <p>Ab voraussichtlich 2027 finden Sie uns im Neubau im <strong>Prälat-Müller-Weg</strong> in Wicker.</p>
+        <a class="link-pfeil" href="/neubau">Zum Neubau</a>
+      </div>
+    </div>
+    <p class="hinweis" style="margin-top:2rem">Bewusst ohne eingebettete Google-Karte: So werden beim Besuch dieser Seite keine Daten an Dritte übertragen.</p>
+  </div>
+</Base>
+<style>
+  .kontakt-grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); margin-top: 2rem; }
+  address { font-style: normal; margin-bottom: 1rem; }
+  .notfall-hinweis { background: var(--rot); color: #fff; padding: 1.1rem 1.4rem; border-radius: var(--radius); font-size: 1.1rem; }
+  .notfall-hinweis a { color: #fff; font-weight: 700; font-size: 1.3rem; }
+</style>

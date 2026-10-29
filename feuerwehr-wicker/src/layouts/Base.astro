@@ -1,0 +1,88 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE } from '../lib/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  noindex?: boolean;
+  type?: 'website' | 'article';
+  datum?: Date;
+}
+const { title, description = SITE.beschreibung, image = '/og-bild.jpg', noindex = false, type = 'website', datum } = Astro.props;
+const voll = title ? `${title} | ${SITE.kurz}` : `${SITE.name} – 365 Tage, 24 Stunden für Sie da`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const bildUrl = new URL(image, Astro.site);
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FireStation',
+  name: SITE.name,
+  url: Astro.site?.toString(),
+  telephone: SITE.telefon,
+  email: SITE.email,
+  address: { '@type': 'PostalAddress', streetAddress: SITE.strasse, postalCode: SITE.plz, addressLocality: `${SITE.ort}-${SITE.ortsteil}`, addressCountry: 'DE' },
+  geo: { '@type': 'GeoCoordinates', latitude: SITE.geo.lat, longitude: SITE.geo.lon },
+  sameAs: [SITE.facebook],
+};
+---
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{voll}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="theme-color" content="#c8102e" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="alternate" type="application/rss+xml" title={`${SITE.kurz} – Aktuelles`} href="/rss.xml" />
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:title" content={title ?? SITE.name} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={bildUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    {datum && <meta property="article:published_time" content={datum.toISOString()} />}
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+    <Header />
+    <main id="inhalt" tabindex="-1">
+      <slot />
+    </main>
+    <Footer />
+    <div class="lightbox" hidden data-lightbox><button type="button" aria-label="Bild schließen">×</button><img alt="" /></div>
+    <script>
+      // Bilder im Fließtext per Klick vergrößern (einfache, barrierearme Lightbox)
+      const lb = document.querySelector<HTMLElement>('[data-lightbox]');
+      const lbImg = lb?.querySelector('img');
+      document.querySelectorAll<HTMLImageElement>('.prose img, [data-zoom] img').forEach((img) => {
+        img.addEventListener('click', () => {
+          if (!lb || !lbImg) return;
+          lbImg.src = img.currentSrc || img.src; lbImg.alt = img.alt; lb.hidden = false;
+          lb.querySelector('button')?.focus();
+        });
+      });
+      lb?.addEventListener('click', () => (lb.hidden = true));
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lb) lb.hidden = true; });
+    </script>
+    <style is:global>
+      body { min-height: 100vh; display: flex; flex-direction: column; }
+      main { flex: 1; outline: none; }
+      .lightbox { position: fixed; inset: 0; background: rgba(10, 10, 12, .92); z-index: 200; display: grid; place-items: center; padding: 1rem; cursor: zoom-out; }
+      .lightbox[hidden] { display: none; }
+      .lightbox img { max-height: 92vh; max-width: 96vw; width: auto; border-radius: 6px; }
+      .lightbox button { position: absolute; top: 1rem; right: 1rem; width: 48px; height: 48px; border-radius: 50%; border: 0; background: #fff; font-size: 2rem; line-height: 1; cursor: pointer; }
+    </style>
+  </body>
+</html>

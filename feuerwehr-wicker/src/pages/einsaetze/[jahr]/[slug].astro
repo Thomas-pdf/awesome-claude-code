@@ -1,0 +1,74 @@
+---
+import { render } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import PageHero from '../../../components/PageHero.astro';
+import { einsaetze, datumLang, einsatzJahr, type Einsatz } from '../../../lib/inhalte';
+export async function getStaticPaths() {
+  const alle = await einsaetze();
+  return alle.map((e, i) => {
+    const [jahr, slug] = e.id.split('/');
+    return { params: { jahr, slug }, props: { e, neuer: alle[i - 1], aelter: alle[i + 1] } };
+  });
+}
+interface Props { e: Einsatz; neuer?: Einsatz; aelter?: Einsatz }
+const { e, neuer, aelter } = Astro.props;
+const { Content } = await render(e);
+const d = e.data;
+const jahr = einsatzJahr(e);
+const zeilen: [string, string | number | undefined][] = [
+  ['Einsatznummer', d.nummer.replace('_', ' ')],
+  ['Datum / Alarmzeit', `${datumLang(d.datum)}${d.uhrzeit ? `, ${d.uhrzeit} Uhr` : ''}`],
+  ['Einsatzart', d.art],
+  ['Alarmstichwort', d.stichwort],
+  ['Einsatzstelle', d.einsatzort],
+  ['Alarmierung', d.alarmierung],
+  ['Einsatzdauer', d.dauerMinuten ? `${d.dauerMinuten} Minuten` : undefined],
+  ['Fahrzeuge', d.fahrzeuge],
+  ['Einsatzkräfte FF Wicker', d.kraefte],
+  ['Weitere Kräfte', d.weitereKraefte],
+];
+---
+<Base title={`${d.stichwort} – Einsatz ${d.nummer.replace('_', ' ')}`} description={`Einsatz der Feuerwehr Wicker am ${datumLang(d.datum)}: ${d.stichwort}${d.einsatzort ? ` in ${d.einsatzort}` : ''}.`} image={d.bilder[0]}>
+  <PageHero titel={d.stichwort} eyebrow={`Einsatz ${d.nummer.replace('_', ' ')}`} krumen={[{ label: 'Einsätze', href: '/einsaetze' }, { label: String(jahr), href: `/einsaetze/${jahr}` }, { label: d.nummer.replace('_', ' ') }]} />
+  <div class="container layout-seite">
+    <div data-pagefind-body>
+      <dl class="einsatzdaten">
+        {zeilen.filter(([, v]) => v !== undefined && v !== '').map(([k, v]) => (<div><dt>{k}</dt><dd>{v}</dd></div>))}
+      </dl>
+      {e.body?.trim() ? (
+        <div class="prose">
+          <h2>Einsatzbericht</h2>
+          <Content />
+        </div>
+      ) : <p class="hinweis">Zu diesem Einsatz liegt kein ausführlicher Bericht vor.</p>}
+      {d.bilder.length > 0 && (
+        <div class="einsatzbilder" data-zoom>
+          {d.bilder.map((src) => <img src={src} alt={`Einsatzfoto ${d.nummer}`} loading="lazy" />)}
+        </div>
+      )}
+    </div>
+    <aside class="seitenleiste">
+      <nav class="box" aria-label="Weitere Einsätze">
+        <h2>Weitere Einsätze</h2>
+        <ul>
+          {neuer && <li><a href={`/einsaetze/${neuer.id}`}>← {neuer.data.stichwort.split(' - ')[0]} ({neuer.data.datum.toLocaleDateString('de-DE', { timeZone: 'UTC' })})</a></li>}
+          {aelter && <li><a href={`/einsaetze/${aelter.id}`}>{aelter.data.stichwort.split(' - ')[0]} ({aelter.data.datum.toLocaleDateString('de-DE', { timeZone: 'UTC' })}) →</a></li>}
+          <li><a href={`/einsaetze/${jahr}`}>Alle Einsätze {jahr}</a></li>
+        </ul>
+      </nav>
+      <div class="box box--rot">
+        <h2>Im Notfall: 112</h2>
+        <p>Ruhe bewahren, Notruf wählen, Fragen der Leitstelle beantworten.</p>
+        <a class="btn btn--hell" href="/buergerinfo/verhalten-im-notfall">So geht's richtig</a>
+      </div>
+    </aside>
+  </div>
+</Base>
+<style>
+  .einsatzdaten { margin: 0 0 2.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 1px; background: var(--linie); border: 1px solid var(--linie); border-radius: var(--radius); overflow: hidden; }
+  .einsatzdaten div { background: #fff; padding: .9rem 1.1rem; }
+  .einsatzdaten dt { font-size: .82rem; text-transform: uppercase; letter-spacing: .06em; color: var(--text-2); font-weight: 700; }
+  .einsatzdaten dd { margin: .15rem 0 0; font-weight: 600; }
+  .einsatzbilder { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: .8rem; margin-top: 2rem; }
+  .einsatzbilder img { border-radius: var(--radius-s); aspect-ratio: 4/3; object-fit: cover; width: 100%; cursor: zoom-in; }
+</style>

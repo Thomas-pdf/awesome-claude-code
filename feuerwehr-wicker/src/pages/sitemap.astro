@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { seiten } from '../lib/inhalte';
+import { NAVIGATION } from '../lib/navigation';
+const alle = (await seiten()).filter((s) => !s.data.pfad.includes('?'));
+const wurzeln = alle.filter((s) => !s.data.eltern);
+const kinder = (p: string) => alle.filter((s) => s.data.eltern === p);
+---
+<Base title="Sitemap" description="Übersicht aller Seiten der Website der Feuerwehr Wicker.">
+  <PageHero titel="Sitemap" krumen={[{ label: 'Sitemap' }]} />
+  <div class="container section sitemap">
+    <section><h2>Hauptbereiche</h2><ul>{NAVIGATION.map((n) => <li><a href={n.href}>{n.label}</a>{n.kinder && <ul>{n.kinder.map((k) => <li><a href={k.href}>{k.label}</a></li>)}</ul>}</li>)}</ul></section>
+    <section><h2>Alle Seiten</h2>
+      <ul>{wurzeln.map((w) => (
+        <li><a href={w.data.pfad}>{w.data.title}</a>
+          {kinder(w.data.pfad).length > 0 && <ul>{kinder(w.data.pfad).map((k) => <li><a href={k.data.pfad}>{k.data.title}</a>
+            {kinder(k.data.pfad).length > 0 && <ul>{kinder(k.data.pfad).map((kk) => <li><a href={kk.data.pfad}>{kk.data.title}</a></li>)}</ul>}</li>)}</ul>}
+        </li>))}
+      </ul>
+    </section>
+    <section><h2>Archive</h2><ul><li><a href="/aktuelles">Alle Berichte</a></li><li><a href="/einsaetze">Alle Einsätze</a></li><li><a href="/termine">Termine</a></li><li><a href="/impressum">Impressum</a></li><li><a href="/datenschutz">Datenschutz</a></li></ul></section>
+  </div>
+</Base>
+<style>
+  .sitemap { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); }
+  .sitemap ul { padding-left: 1.1rem; } .sitemap li { margin: .25rem 0; }
+</style>

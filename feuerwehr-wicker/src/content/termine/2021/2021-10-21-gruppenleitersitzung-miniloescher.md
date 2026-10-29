@@ -1,0 +1,9 @@
+---
+titel: "Gruppenleitersitzung Minilöscher"
+datum: 2021-10-21
+beginn: "20:00"
+ende: "22:00"
+kategorie: minis
+---
+
+

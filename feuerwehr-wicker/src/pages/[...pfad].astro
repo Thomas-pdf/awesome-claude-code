@@ -1,0 +1,126 @@
+---
+import { render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import BerichtKarte from '../components/BerichtKarte.astro';
+import TerminListe from '../components/TerminListe.astro';
+import { seiten, berichte, kommendeTermine, bereichName, datum, type Seite } from '../lib/inhalte';
+
+// Bereichs-Startseiten: zeigen zusätzlich Berichte & Termine des Bereichs
+const BEREICHS_START: Record<string, string> = {
+  '/einsatzabteilung': 'einsatzabteilung', '/jugendfeuerwehr': 'jugendfeuerwehr', '/miniloescher': 'minis',
+  '/verein': 'verein', '/neubau': 'neubau', '/100-jahre': 'jubilaeum',
+};
+const INTRO: Record<string, string> = {
+  '/einsatzabteilung': 'Die aktive Mannschaft der Feuerwehr Wicker: Brandbekämpfung, technische Hilfe, Unwetter – rund um die Uhr, ehrenamtlich.',
+  '/jugendfeuerwehr': 'Teamgeist, Technik und Abenteuer für Jugendliche von 10 bis 17 Jahren.',
+  '/miniloescher': 'Unsere Kinderfeuerwehr: spielerisch Brandschutz lernen ab 6 Jahren.',
+  '/verein': 'Der Feuerwehrverein „Freiwillige Feuerwehr Wicker 1925 e.V.“ unterstützt die Wehr ideell und finanziell.',
+  '/neubau': 'Im Prälat-Müller-Weg entsteht das neue Feuerwehrhaus Wicker. Spatenstich Februar 2026, Fertigstellung geplant 2027.',
+  '/100-jahre': '1925 – 2025: Ein Jahrhundert Feuerwehr Wicker.',
+  '/mitmachen': 'Feuerwehr ist mehr als Löschen. Werde Teil einer starken Gemeinschaft – wir bilden dich aus.',
+  '/buergerinfo': 'Tipps und Informationen rund um Brandschutz und Verhalten im Notfall.',
+};
+
+export async function getStaticPaths() {
+  // Seiten mit eigener Vorlage (src/pages/*.astro) hier ausnehmen
+  const EIGENE = new Set(['/kontakt']);
+  const alle = await seiten();
+  return alle
+    .filter((s) => !EIGENE.has(s.data.pfad) && !s.data.pfad.includes('?') && s.data.pfad !== '/')
+    .map((s) => ({ params: { pfad: s.data.pfad.replace(/^\//, '') }, props: { s } }));
+}
+interface Props { s: Seite }
+const { s } = Astro.props;
+const { Content } = await render(s);
+const alle = await seiten();
+const kinder = alle.filter((x) => x.data.eltern === s.data.pfad);
+const geschwister = s.data.eltern ? alle.filter((x) => x.data.eltern === s.data.eltern) : [];
+const elternSeite = s.data.eltern ? alle.find((x) => x.data.pfad === s.data.eltern) : undefined;
+const grosseltern = elternSeite?.data.eltern ? alle.find((x) => x.data.pfad === elternSeite.data.eltern) : undefined;
+const krumen = [
+  ...(grosseltern ? [{ label: grosseltern.data.title, href: grosseltern.data.pfad }] : []),
+  ...(elternSeite ? [{ label: elternSeite.data.title, href: elternSeite.data.pfad }] : []),
+  { label: s.data.title },
+];
+const bereich = BEREICHS_START[s.data.pfad];
+const bereichsBerichte = bereich ? (await berichte()).filter((b) => b.data.bereich === bereich).slice(0, 6) : [];
+const terminKat = bereich === 'jugendfeuerwehr' ? 'jugendfeuerwehr' : bereich === 'minis' ? 'minis' : bereich === 'einsatzabteilung' ? 'einsatzabteilung' : undefined;
+const bereichsTermine = terminKat ? (await kommendeTermine()).filter((t) => t.data.kategorie === terminKat).slice(0, 5) : [];
+const neubauTagebuch = s.data.pfad === '/neubau' ? (await berichte()).filter((b) => b.data.bereich === 'neubau') : [];
+---
+<Base title={s.data.title} description={s.data.beschreibung?.replace(/\\/g, '').slice(0, 160)} image={s.data.bild}>
+  <PageHero titel={s.data.title} text={INTRO[s.data.pfad]} krumen={krumen} eyebrow={bereich ? bereichName(bereich) : undefined} />
+  <div class="container layout-seite">
+    <div>
+      <article class="prose" data-pagefind-body>
+        <Content />
+      </article>
+      {kinder.length > 0 && (
+        <section class="unterseiten" aria-labelledby="unterseiten-titel">
+          <h2 id="unterseiten-titel">Mehr zum Thema</h2>
+          <div class="grid grid-3">
+            {kinder.map((k) => (
+              <a class="unterseite" href={k.data.pfad}>
+                {k.data.bild && <img src={k.data.bild} alt="" loading="lazy" />}
+                <span class="unterseite__text"><strong>{k.data.title}</strong>
+                  {k.data.beschreibung && <span>{k.data.beschreibung.replace(/\\/g, '').slice(0, 110)}…</span>}</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+      {s.data.stand && <p class="stand">Stand: {datum(s.data.stand)}</p>}
+    </div>
+    <aside class="seitenleiste">
+      {geschwister.length > 1 && (
+        <nav class="box" aria-label={elternSeite?.data.title ?? 'Navigation'}>
+          <h2>{elternSeite?.data.title}</h2>
+          <ul>{geschwister.map((g) => <li><a href={g.data.pfad} aria-current={g.data.pfad === s.data.pfad ? 'page' : undefined}>{g.data.title}</a></li>)}</ul>
+        </nav>
+      )}
+      {bereichsTermine.length > 0 && (
+        <div class="box">
+          <h2>Nächste Termine</h2>
+          <TerminListe liste={bereichsTermine} ort={false} />
+          <p style="margin:.8rem 0 0"><a class="link-pfeil" href="/termine">Alle Termine</a></p>
+        </div>
+      )}
+      <div class="box box--rot">
+        <h2>Mitmachen?</h2>
+        <p>Neue Gesichter sind immer willkommen – Quereinsteiger ausdrücklich auch.</p>
+        <a class="btn btn--hell" href="/mitmachen">Mehr erfahren</a>
+      </div>
+    </aside>
+  </div>
+  {neubauTagebuch.length > 0 && (
+    <section class="section section--grau">
+      <div class="container">
+        <div class="section-head"><div><p class="eyebrow">Bautagebuch</p><h2>Fortschritt auf der Baustelle</h2></div></div>
+        <div class="grid grid-3">{neubauTagebuch.map((b) => <BerichtKarte b={b} />)}</div>
+      </div>
+    </section>
+  )}
+  {bereichsBerichte.length > 0 && !neubauTagebuch.length && (
+    <section class="section section--grau">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">Aktuelles</p><h2>Neues aus dem Bereich {bereichName(bereich!)}</h2></div>
+          <a class="link-pfeil" href={`/aktuelles/bereich/${bereich}`}>Alle Berichte</a>
+        </div>
+        <div class="grid grid-3">{bereichsBerichte.map((b) => <BerichtKarte b={b} />)}</div>
+      </div>
+    </section>
+  )}
+</Base>
+<style>
+  .unterseiten { margin-top: 3rem; }
+  .unterseite { display: flex; flex-direction: column; border: 1px solid var(--linie); border-radius: var(--radius); overflow: hidden; text-decoration: none; color: var(--text); background: #fff; transition: .2s; }
+  .unterseite:hover { border-color: var(--rot); box-shadow: var(--schatten); color: var(--text); }
+  .unterseite img { aspect-ratio: 16/9; object-fit: cover; width: 100%; }
+  .unterseite__text { padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: .3rem; }
+  .unterseite__text strong { font-family: var(--font-head); font-size: 1.3rem; }
+  .unterseite__text span { font-size: .92rem; color: var(--text-2); }
+  .stand { font-size: .85rem; color: var(--text-2); margin-top: 3rem; }
+  .seitenleiste .terminliste { gap: .4rem; }
+</style>

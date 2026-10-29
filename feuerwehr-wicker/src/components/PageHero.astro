@@ -1,0 +1,20 @@
+---
+interface Props { titel: string; eyebrow?: string; text?: string; krumen?: { label: string; href?: string }[] }
+const { titel, eyebrow, text, krumen = [] } = Astro.props;
+const alle = [{ label: 'Start', href: '/' }, ...krumen];
+---
+<section class="page-hero">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Brotkrumen">
+      <ol>
+        {alle.map((k, i) => (
+          <li>{k.href && i < alle.length - 1 ? <a href={k.href}>{k.label}</a> : <span aria-current={i === alle.length - 1 ? 'page' : undefined}>{k.label}</span>}</li>
+        ))}
+      </ol>
+    </nav>
+    {eyebrow && <p class="eyebrow" style="margin-top:1.2rem">{eyebrow}</p>}
+    <h1>{titel}</h1>
+    {text && <p>{text}</p>}
+    <slot />
+  </div>
+</section>

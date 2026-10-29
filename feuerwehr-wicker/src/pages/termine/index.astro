@@ -1,0 +1,51 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import TerminListe from '../../components/TerminListe.astro';
+import { kommendeTermine, monatJahr, termine, bereichName } from '../../lib/inhalte';
+const liste = await kommendeTermine();
+const gruppen = new Map<string, typeof liste>();
+for (const t of liste) {
+  const k = monatJahr(t.data.datum);
+  gruppen.set(k, [...(gruppen.get(k) ?? []), t]);
+}
+const jahre = [...new Set((await termine()).map((t) => t.data.datum.getUTCFullYear()))].sort((a, b) => b - a);
+const KATS = ['einsatzabteilung', 'jugendfeuerwehr', 'minis', 'allgemein'];
+---
+<Base title="Termine" description="Übungsdienste, Jugendfeuerwehr, Minilöscher und Veranstaltungen der Feuerwehr Flörsheim-Wicker – alle kommenden Termine, auch zum Abonnieren im eigenen Kalender.">
+  <PageHero titel="Termine" eyebrow="Kalender" text="Übungen, Jugendfeuerwehr, Minilöscher und Veranstaltungen. Tipp: Abonnieren Sie den Kalender – dann landen neue Termine automatisch in Ihrem Handy-Kalender." krumen={[{ label: 'Termine' }]}>
+    <p style="margin-top:1.4rem"><a class="btn btn--rot" href="/termine.ics">Kalender abonnieren (iCal)</a></p>
+  </PageHero>
+  <div class="container section">
+    <div class="chips" role="group" aria-label="Nach Gruppe filtern" data-filter>
+      <button class="chip aktiv" type="button" data-kat="alle" aria-pressed="true">Alle</button>
+      {KATS.map((k) => <button class="chip" type="button" data-kat={k} aria-pressed="false">{k === 'einsatzabteilung' ? 'Übungen Einsatzabteilung' : bereichName(k)}</button>)}
+    </div>
+    {[...gruppen].map(([monat, ts]) => (
+      <section class="monat" data-monat>
+        <h2>{monat}</h2>
+        <TerminListe liste={ts} />
+      </section>
+    ))}
+    {liste.length === 0 && <p>Derzeit sind keine kommenden Termine eingetragen.</p>}
+    <nav class="archiv" aria-label="Terminarchiv">
+      <h2>Terminarchiv</h2>
+      <div class="chips">{jahre.map((j) => <a class="chip" href={`/termine/archiv/${j}`}>{j}</a>)}</div>
+    </nav>
+  </div>
+</Base>
+<script>
+  const knoepfe = document.querySelectorAll<HTMLButtonElement>('[data-filter] [data-kat]');
+  knoepfe.forEach((k) => k.addEventListener('click', () => {
+    const kat = k.dataset.kat;
+    knoepfe.forEach((x) => { x.classList.toggle('aktiv', x === k); x.setAttribute('aria-pressed', String(x === k)); });
+    document.querySelectorAll<HTMLElement>('[data-kategorie]').forEach((li) => { li.hidden = kat !== 'alle' && li.dataset.kategorie !== kat; });
+    document.querySelectorAll<HTMLElement>('[data-monat]').forEach((m) => { m.hidden = !m.querySelector('[data-kategorie]:not([hidden])'); });
+  }));
+</script>
+<style>
+  .monat { margin-bottom: 2.5rem; }
+  .monat h2 { font-size: 1.6rem; border-bottom: 2px solid var(--anthrazit); padding-bottom: .4rem; }
+  .archiv { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--linie); }
+  button.chip { cursor: pointer; font-family: var(--font-body); }
+</style>

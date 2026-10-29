@@ -1,0 +1,7 @@
+---
+import AktuellesUebersicht from '../../components/AktuellesUebersicht.astro';
+import { berichte } from '../../lib/inhalte';
+import { jahreListe, seitenzahl, ausschnitt } from '../../lib/paginierung';
+const alle = await berichte();
+---
+<AktuellesUebersicht liste={ausschnitt(alle, 1)} seite={1} seiten={seitenzahl(alle.length)} basis="/aktuelles" jahre={await jahreListe()} />

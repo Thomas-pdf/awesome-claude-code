@@ -1,0 +1,50 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from './PageHero.astro';
+import EinsatzListe from './EinsatzListe.astro';
+import EinsatzStatistik from './EinsatzStatistik.astro';
+import { einsaetze, einsatzJahr } from '../lib/inhalte';
+interface Props { jahr: number; startseite?: boolean }
+const { jahr, startseite = false } = Astro.props;
+const alle = await einsaetze();
+const liste = alle.filter((e) => einsatzJahr(e) === jahr);
+const jahre = [...new Set(alle.map(einsatzJahr))].sort((a, b) => b - a);
+const proJahr = jahre.map((j) => ({ j, n: alle.filter((e) => einsatzJahr(e) === j).length })).reverse();
+const maxJ = Math.max(...proJahr.map((x) => x.n));
+---
+<Base title={startseite ? 'Einsätze' : `Einsätze ${jahr}`} description={`Alle ${liste.length} Einsätze der Feuerwehr Flörsheim-Wicker im Jahr ${jahr}: Brände, technische Hilfeleistungen und weitere Alarmierungen.`}>
+  <PageHero titel={`Einsätze ${jahr}`} eyebrow="Einsatzgeschehen" text="Jeder Alarm wird von ehrenamtlichen Kräften abgearbeitet – zu jeder Tages- und Nachtzeit. Hier finden Sie alle Einsätze seit dem Jahr 2000." krumen={startseite ? [{ label: 'Einsätze' }] : [{ label: 'Einsätze', href: '/einsaetze' }, { label: String(jahr) }]} />
+  <div class="container section">
+    <nav class="chips" aria-label="Jahr wählen">
+      {jahre.map((j) => <a class="chip" href={`/einsaetze/${j}`} aria-current={j === jahr ? 'page' : undefined}>{j}</a>)}
+    </nav>
+    <EinsatzStatistik liste={liste} jahr={jahr} />
+    <h2>Alle Einsätze {jahr}</h2>
+    <EinsatzListe liste={liste} />
+    {startseite && (
+      <section class="verlauf" aria-labelledby="verlauf-titel">
+        <h2 id="verlauf-titel">Einsätze pro Jahr seit {proJahr[0].j}</h2>
+        <div class="verlauf__balken">
+          {proJahr.map((x) => (
+            <a href={`/einsaetze/${x.j}`} class="verlauf__spalte" title={`${x.j}: ${x.n} Einsätze`}>
+              <span class="verlauf__wert">{x.n}</span>
+              <span class="verlauf__b" style={`height:${(x.n / maxJ) * 100}%`}></span>
+              <span class="verlauf__j">{String(x.j).slice(2)}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+    <p class="hinweis" style="margin-top:3rem">Hinweis: Aus Rücksicht auf Betroffene veröffentlichen wir keine Namen und keine genauen Adressen. Einsatzfotos zeigen keine erkennbaren Verletzten.</p>
+  </div>
+</Base>
+<style>
+  .verlauf { margin-top: 4rem; }
+  .verlauf__balken { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 4px; height: 220px; align-items: end; }
+  .verlauf__spalte { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; text-decoration: none; color: var(--text-2); }
+  .verlauf__b { width: 100%; background: var(--anthrazit); border-radius: 4px 4px 0 0; transition: background .15s; }
+  .verlauf__spalte:hover .verlauf__b { background: var(--rot); }
+  .verlauf__wert { font-size: .7rem; font-weight: 700; }
+  .verlauf__j { font-size: .72rem; margin-top: .3rem; }
+  @media (max-width: 600px) { .verlauf__wert { display: none; } .verlauf__j { font-size: .6rem; } }
+</style>

@@ -1,0 +1,43 @@
+---
+import type { Einsatz } from '../lib/inhalte';
+interface Props { liste: Einsatz[]; jahr: number }
+const { liste, jahr } = Astro.props;
+const MONATE = ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'];
+const proMonat = MONATE.map((_, m) => liste.filter((e) => e.data.datum.getUTCMonth() === m).length);
+const max = Math.max(1, ...proMonat);
+const arten = ['Brand', 'Hilfeleistung', 'Sonstiges'].map((a) => ({ a, n: liste.filter((e) => e.data.art === a).length })).filter((x) => x.n);
+const stunden = Math.round(liste.reduce((s, e) => s + (e.data.dauerMinuten ?? 0), 0) / 60);
+const personenStunden = Math.round(liste.reduce((s, e) => s + ((e.data.dauerMinuten ?? 0) * (e.data.kraefte ?? 0)), 0) / 60);
+---
+<div class="statistik">
+  <div class="statistik__kennzahlen">
+    <div><strong>{liste.length}</strong><span>Einsätze {jahr}</span></div>
+    {arten.map((x) => <div class={`art-${x.a}`}><strong>{x.n}</strong><span>{x.a === 'Brand' ? 'Brandeinsätze' : x.a === 'Hilfeleistung' ? 'Technische Hilfe' : 'Sonstige'}</span></div>)}
+    {stunden > 0 && <div><strong>{stunden.toLocaleString('de-DE')} h</strong><span>Einsatzdauer gesamt</span></div>}
+    {personenStunden > 0 && <div><strong>{personenStunden.toLocaleString('de-DE')} h</strong><span>ehrenamtliche Personenstunden</span></div>}
+  </div>
+  <figure class="balken" aria-label={`Einsätze pro Monat ${jahr}`}>
+    {proMonat.map((n, i) => (
+      <div class="balken__spalte" title={`${MONATE[i]}: ${n} Einsätze`}>
+        <span class="balken__wert">{n || ''}</span>
+        <span class="balken__balken" style={`height:${(n / max) * 100}%`}></span>
+        <span class="balken__label">{MONATE[i]}</span>
+      </div>
+    ))}
+    <figcaption class="sr-only">{proMonat.map((n, i) => `${MONATE[i]}: ${n}`).join(', ')}</figcaption>
+  </figure>
+</div>
+<style>
+  .statistik { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); margin-bottom: 3rem; align-items: end; }
+  .statistik__kennzahlen { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: .8rem; }
+  .statistik__kennzahlen div { background: var(--flaeche); border-radius: var(--radius-s); padding: 1rem; border-top: 4px solid var(--anthrazit); }
+  .statistik__kennzahlen .art-Brand { border-top-color: var(--rot); }
+  .statistik__kennzahlen .art-Hilfeleistung { border-top-color: var(--blau); }
+  .statistik__kennzahlen strong { display: block; font-family: var(--font-head); font-size: 2rem; line-height: 1; }
+  .statistik__kennzahlen span { font-size: .88rem; color: var(--text-2); }
+  .balken { margin: 0; display: grid; grid-template-columns: repeat(12, 1fr); gap: .35rem; height: 200px; align-items: end; }
+  .balken__spalte { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+  .balken__balken { width: 100%; background: linear-gradient(180deg, var(--rot), var(--rot-dunkel)); border-radius: 5px 5px 0 0; min-height: 2px; }
+  .balken__wert { font-size: .8rem; font-weight: 700; }
+  .balken__label { font-size: .75rem; color: var(--text-2); margin-top: .3rem; }
+</style>

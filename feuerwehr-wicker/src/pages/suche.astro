@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+---
+<Base title="Suche" description="Durchsuchen Sie alle Berichte, Einsätze und Seiten der Feuerwehr Wicker.">
+  <PageHero titel="Suche" text="Durchsuchen Sie über 500 Berichte, mehr als 1.500 Einsätze und alle Informationsseiten." krumen={[{ label: 'Suche' }]} />
+  <div class="container--schmal section">
+    <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+    <div id="suche"></div>
+    <noscript><p>Die Suche benötigt JavaScript. Alternativ finden Sie alle Seiten in der <a href="/sitemap">Sitemap</a>.</p></noscript>
+    <script is:inline src="/pagefind/pagefind-ui.js"></script>
+    <script is:inline>
+      window.addEventListener('DOMContentLoaded', () => {
+        // eslint-disable-next-line no-undef
+        new PagefindUI({ element: '#suche', showSubResults: true, showImages: false, translations: { placeholder: 'Suchbegriff, z. B. Drehleiter, Martinszug, Hochwasser …', zero_results: 'Keine Treffer für [SEARCH_TERM]' } });
+        const q = new URLSearchParams(location.search).get('q');
+        if (q) { const i = document.querySelector('#suche input'); if (i) { i.value = q; i.dispatchEvent(new Event('input')); } }
+      });
+    </script>
+  </div>
+</Base>
+<style is:global>
+  #suche { --pagefind-ui-primary: #c8102e; --pagefind-ui-border-radius: 10px; --pagefind-ui-font: 'Source Sans 3', system-ui, sans-serif; }
+</style>

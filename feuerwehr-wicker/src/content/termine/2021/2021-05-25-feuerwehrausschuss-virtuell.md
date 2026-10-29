@@ -1,0 +1,10 @@
+---
+titel: "Feuerwehrausschuss (virtuell)"
+datum: 2021-05-25
+beginn: "19:00"
+ende: "22:00"
+ort: "Feuerwehrhaus Wicker, Flörsheimer Straße 2, 65439 Wicker, Deutschland"
+kategorie: einsatzabteilung
+---
+
+

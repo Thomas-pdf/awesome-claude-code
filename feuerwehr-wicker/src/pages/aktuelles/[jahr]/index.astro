@@ -1,0 +1,11 @@
+---
+import AktuellesUebersicht from '../../../components/AktuellesUebersicht.astro';
+import { berichte } from '../../../lib/inhalte';
+import { jahreListe } from '../../../lib/paginierung';
+export async function getStaticPaths() {
+  return (await jahreListe()).map((jahr) => ({ params: { jahr } }));
+}
+const { jahr } = Astro.params;
+const liste = (await berichte()).filter((b) => String(b.data.date.getUTCFullYear()) === jahr);
+---
+<AktuellesUebersicht titel={`Berichte ${jahr}`} liste={liste} seite={1} seiten={1} basis={`/aktuelles/${jahr}`} jahr={jahr} jahre={await jahreListe()} />

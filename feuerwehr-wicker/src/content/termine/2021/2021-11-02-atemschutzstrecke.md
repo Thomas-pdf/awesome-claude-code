@@ -1,0 +1,10 @@
+---
+titel: "Atemschutzstrecke"
+datum: 2021-11-02
+beginn: "18:15"
+ende: "21:15"
+ort: "Feuerwehrhaus Hochheim"
+kategorie: einsatzabteilung
+---
+
+

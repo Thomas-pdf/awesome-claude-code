@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /intern/
+
+Sitemap: https://www.feuerwehr-wicker.de/sitemap-index.xml

@@ -1,0 +1,37 @@
+---
+import { type Einsatz, einsatzUrl, datum, artKlasse } from '../lib/inhalte';
+interface Props { liste: Einsatz[]; kompakt?: boolean }
+const { liste, kompakt = false } = Astro.props;
+---
+<ol class:list={['einsatzliste', { kompakt }]}>
+  {liste.map((e) => (
+    <li class={`einsatz einsatz--${artKlasse(e.data.art)}`}>
+      <a href={einsatzUrl(e)}>
+        <span class="einsatz__art" title={e.data.art}>{e.data.art === 'Brand' ? 'B' : e.data.art === 'Hilfeleistung' ? 'H' : 'S'}</span>
+        <span class="einsatz__haupt">
+          <span class="einsatz__stichwort">{e.data.stichwort}</span>
+          <span class="einsatz__meta">
+            <time datetime={e.data.datum.toISOString()}>{datum(e.data.datum)}{e.data.uhrzeit && `, ${e.data.uhrzeit} Uhr`}</time>
+            {!kompakt && e.data.einsatzort && <span>· {e.data.einsatzort}</span>}
+            {!kompakt && e.data.dauerMinuten && <span>· {e.data.dauerMinuten} min</span>}
+            {e.data.bilder.length > 0 && <span>· 📷 {e.data.bilder.length}</span>}
+          </span>
+        </span>
+        <span class="einsatz__nr">{e.data.nummer.replace('_', ' ')}</span>
+      </a>
+    </li>
+  ))}
+</ol>
+<style>
+  .einsatzliste { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; }
+  .einsatz a { display: grid; grid-template-columns: auto 1fr auto; gap: 1rem; align-items: center; padding: .85rem 1rem; border-radius: var(--radius-s); background: #fff; border: 1px solid var(--linie); text-decoration: none; color: var(--text); transition: .15s; }
+  .einsatz a:hover { border-color: var(--rot); box-shadow: var(--schatten); }
+  .einsatz__art { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; font-family: var(--font-head); font-weight: 700; font-size: 1.3rem; color: #fff; background: var(--rot); }
+  .einsatz--hilfe .einsatz__art { background: var(--blau); }
+  .einsatz--sonst .einsatz__art { background: #6b737b; }
+  .einsatz__stichwort { display: block; font-weight: 700; line-height: 1.3; }
+  .einsatz__meta { display: flex; flex-wrap: wrap; gap: .35rem; font-size: .88rem; color: var(--text-2); }
+  .einsatz__nr { font-family: var(--font-head); font-size: 1rem; color: var(--text-2); white-space: nowrap; }
+  .kompakt .einsatz__nr { display: none; }
+  @media (max-width: 600px) { .einsatz__nr { display: none; } .einsatz a { grid-template-columns: auto 1fr; } }
+</style>

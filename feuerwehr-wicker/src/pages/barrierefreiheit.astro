@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { SITE } from '../lib/site';
+---
+<Base title="Barrierefreiheit" description="Erklärung zur Barrierefreiheit der Website der Feuerwehr Wicker.">
+  <PageHero titel="Barrierefreiheit" krumen={[{ label: 'Barrierefreiheit' }]} />
+  <div class="container--schmal section prose">
+    <p>Wir möchten, dass alle Menschen unsere Website gut nutzen können. Deshalb achten wir auf:</p>
+    <ul>
+      <li>gute Lesbarkeit und ausreichende Farbkontraste,</li>
+      <li>Bedienbarkeit per Tastatur (inkl. „Zum Inhalt springen“) und sichtbaren Fokus,</li>
+      <li>sinnvolle Überschriften-Struktur und Beschriftungen für Screenreader,</li>
+      <li>Darstellung auf allen Bildschirmgrößen und Zoom bis 200 %,</li>
+      <li>Berücksichtigung von „Bewegung reduzieren“ in den Systemeinstellungen.</li>
+    </ul>
+    <h2>Bekannte Einschränkungen</h2>
+    <p>Viele Fotos aus dem Archiv der bisherigen Website haben noch keine aussagekräftigen Bildbeschreibungen. Ältere Dokumente (PDF) sind teilweise nicht barrierefrei. Wir verbessern das schrittweise.</p>
+    <h2>Feedback</h2>
+    <p>Sie stoßen auf eine Barriere? Schreiben Sie uns: <a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+  </div>
+</Base>

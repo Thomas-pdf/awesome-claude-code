@@ -1,0 +1,10 @@
+---
+titel: "Übung MK/AH"
+datum: 2017-03-11
+beginn: "10:00"
+ende: "16:00"
+ort: "Feuerwehrhaus Wicker, Flörsheimer Straße 2, 65439 Wicker, Deutschland"
+kategorie: einsatzabteilung
+---
+
+

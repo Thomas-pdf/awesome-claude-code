@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { SITE } from '../lib/site';
+---
+<Base title="Datenschutzerklärung" description="Datenschutzerklärung der Website der Freiwilligen Feuerwehr Flörsheim-Wicker.">
+  <PageHero titel="Datenschutzerklärung" krumen={[{ label: 'Datenschutz' }]} />
+  <div class="container--schmal section prose">
+    <p class="hinweis"><strong>Entwurf:</strong> Diese Erklärung ist auf den technischen Aufbau der neuen Website zugeschnitten (statisch, ohne Cookies, ohne Tracker, ohne externe Schriften). Abschnitte mit <mark>[KLÄREN]</mark> hängen vom gewählten Hosting ab und sind vor dem Livegang zu ergänzen und rechtlich prüfen zu lassen (z. B. über den Landesfeuerwehrverband Hessen bzw. den Datenschutzbeauftragten der Stadt).</p>
+    <h2>1. Verantwortlicher</h2>
+    <p>{SITE.verein}<br />{SITE.strasse}, {SITE.plz} {SITE.ort}-{SITE.ortsteil}<br />E-Mail: <a href={`mailto:${SITE.email}`}>{SITE.email}</a><br />Vertreten durch: <mark>[KLÄREN: Vorstand]</mark></p>
+    <h2>2. Grundsätzliches</h2>
+    <p>Wir nehmen den Schutz Ihrer Daten ernst. Diese Website ist bewusst datensparsam gebaut:</p>
+    <ul>
+      <li>Wir setzen <strong>keine Cookies</strong> und verwenden <strong>keine Analyse- oder Tracking-Werkzeuge</strong>.</li>
+      <li>Alle Schriftarten, Skripte und Bilder werden <strong>von unserem eigenen Server</strong> geladen – es werden keine Daten an Google Fonts, Facebook o. ä. übertragen.</li>
+      <li>Es gibt keine Kontaktformulare, Kommentarfunktionen oder Benutzerkonten im öffentlichen Teil.</li>
+      <li>Links zu Facebook, WhatsApp oder anderen Diensten sind einfache Links. Erst wenn Sie darauf klicken, verlassen Sie unsere Website.</li>
+    </ul>
+    <h2>3. Hosting und Server-Logdateien</h2>
+    <p>Beim Aufruf der Website verarbeitet der Hosting-Anbieter technisch notwendige Daten (IP-Adresse, Datum und Uhrzeit, aufgerufene Seite, Browsertyp), um die Website auszuliefern und die Sicherheit zu gewährleisten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem sicheren und stabilen Betrieb).</p>
+    <p>Hosting-Anbieter: <mark>[KLÄREN: Name, Anschrift, Sitz (EU), Speicherdauer der Logdateien, Auftragsverarbeitungsvertrag]</mark></p>
+    <h2>4. Kontakt per E-Mail</h2>
+    <p>Wenn Sie uns per E-Mail kontaktieren, verarbeiten wir Ihre Angaben zur Bearbeitung der Anfrage (Art. 6 Abs. 1 lit. b bzw. f DSGVO) und löschen sie, sobald sie nicht mehr erforderlich sind.</p>
+    <h2>5. Kalender-Abonnement und RSS</h2>
+    <p>Wenn Sie unseren Kalender (iCal) oder RSS-Feed abonnieren, ruft Ihr Kalender- bzw. Feed-Programm regelmäßig eine Datei von unserem Server ab. Dabei fallen nur die unter Ziffer 3 genannten Server-Logdaten an.</p>
+    <h2>6. Fotos und Berichte</h2>
+    <p>In Berichten veröffentlichen wir Fotos von Übungen, Veranstaltungen und Einsätzen. Personen auf Fotos werden nur mit Einwilligung bzw. auf Grundlage berechtigter Interessen (Öffentlichkeitsarbeit, Art. 6 Abs. 1 lit. f DSGVO, §§ 22, 23 KUG) gezeigt. Wenn Sie auf einem Foto zu sehen sind und dies nicht wünschen, schreiben Sie uns an <a href={`mailto:${SITE.email}`}>{SITE.email}</a> – wir entfernen das Bild umgehend.</p>
+    <h2>7. Mitgliederbereich</h2>
+    <p>Der Mitgliederbereich ist in dieser Vorschau eine <strong>Demo ohne echte Daten</strong>. Für den späteren Echtbetrieb ist ein eigener Abschnitt zu ergänzen. <mark>[KLÄREN]</mark></p>
+    <h2>8. Ihre Rechte</h2>
+    <p>Sie haben das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) und Widerspruch (Art. 21). Zudem haben Sie das Recht, sich bei einer Aufsichtsbehörde zu beschweren, in Hessen: Der Hessische Beauftragte für Datenschutz und Informationsfreiheit, Gustav-Stresemann-Ring 1, 65189 Wiesbaden.</p>
+    <p>Stand: Entwurf 2026</p>
+  </div>
+</Base>
+<style>mark { background: #ffe58a; padding: 0 .2em; border-radius: 3px; }</style>

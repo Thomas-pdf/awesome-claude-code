@@ -1,0 +1,44 @@
+---
+import { type Termin, bereichName, wochentag } from '../lib/inhalte';
+interface Props { liste: Termin[]; ort?: boolean }
+const { liste, ort = true } = Astro.props;
+const tag = (d: Date) => d.getUTCDate();
+const mon = (d: Date) => new Intl.DateTimeFormat('de-DE', { month: 'short', timeZone: 'UTC' }).format(d).replace('.', '');
+---
+<ol class="terminliste">
+  {liste.map((t) => (
+    <li class={`termin termin--${t.data.kategorie}`} data-kategorie={t.data.kategorie}>
+      <div class="termin__datum" aria-hidden="true">
+        <span class="termin__wt">{wochentag(t.data.datum)}</span>
+        <span class="termin__tag">{tag(t.data.datum)}</span>
+        <span class="termin__mon">{mon(t.data.datum)}</span>
+      </div>
+      <div class="termin__info">
+        <span class="sr-only">{new Intl.DateTimeFormat('de-DE', { dateStyle: 'full', timeZone: 'UTC' }).format(t.data.datum)}</span>
+        <strong class="termin__titel">{t.data.titel}</strong>
+        <span class="termin__meta">
+          {t.data.beginn && <span>{t.data.beginn}{t.data.ende && `–${t.data.ende}`} Uhr</span>}
+          {ort && t.data.ort && <span>· {t.data.ort.split(',')[0]}</span>}
+          <span class="termin__kat">{bereichName(t.data.kategorie)}</span>
+        </span>
+        {t.body && t.body.trim() && <span class="termin__notiz">{t.body.trim()}</span>}
+      </div>
+    </li>
+  ))}
+</ol>
+<style>
+  .terminliste { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; }
+  .termin { display: grid; grid-template-columns: 64px 1fr; gap: 1rem; align-items: center; padding: .7rem .9rem; border-radius: var(--radius-s); background: #fff; border: 1px solid var(--linie); border-left: 5px solid var(--c-allgemein); }
+  .termin--einsatzabteilung { border-left-color: var(--c-einsatzabteilung); }
+  .termin--jugendfeuerwehr { border-left-color: var(--c-jugendfeuerwehr); }
+  .termin--minis { border-left-color: var(--c-minis); }
+  .termin--verein { border-left-color: var(--c-verein); }
+  .termin__datum { display: flex; flex-direction: column; align-items: center; line-height: 1; font-family: var(--font-head); text-transform: uppercase; }
+  .termin__wt { font-size: .8rem; color: var(--text-2); letter-spacing: .08em; }
+  .termin__tag { font-size: 1.9rem; font-weight: 700; color: var(--anthrazit); }
+  .termin__mon { font-size: .85rem; color: var(--rot); font-weight: 700; letter-spacing: .08em; }
+  .termin__titel { display: block; line-height: 1.3; }
+  .termin__meta { display: flex; flex-wrap: wrap; gap: .35rem; font-size: .9rem; color: var(--text-2); }
+  .termin__kat { margin-left: auto; font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; }
+  .termin__notiz { display: block; font-size: .9rem; color: var(--text-2); margin-top: .2rem; }
+</style>

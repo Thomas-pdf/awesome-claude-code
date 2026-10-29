@@ -1,0 +1,12 @@
+---
+import AktuellesUebersicht from '../../../components/AktuellesUebersicht.astro';
+import { berichte } from '../../../lib/inhalte';
+import { jahreListe, seitenzahl, ausschnitt } from '../../../lib/paginierung';
+export async function getStaticPaths() {
+  const alle = await berichte();
+  return Array.from({ length: seitenzahl(alle.length) - 1 }, (_, i) => ({ params: { n: String(i + 2) } }));
+}
+const n = Number(Astro.params.n);
+const alle = await berichte();
+---
+<AktuellesUebersicht liste={ausschnitt(alle, n)} seite={n} seiten={seitenzahl(alle.length)} basis="/aktuelles" jahre={await jahreListe()} />

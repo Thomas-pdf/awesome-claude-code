@@ -1,0 +1,17 @@
+---
+import AktuellesUebersicht from '../../../../components/AktuellesUebersicht.astro';
+import { berichte, bereichName } from '../../../../lib/inhalte';
+import { jahreListe, seitenzahl, ausschnitt } from '../../../../lib/paginierung';
+export async function getStaticPaths() {
+  const alle = await berichte();
+  const bereiche = [...new Set(alle.map((b) => b.data.bereich))];
+  return bereiche.flatMap((bereich) => {
+    const n = seitenzahl(alle.filter((b) => b.data.bereich === bereich).length);
+    return Array.from({ length: n }, (_, i) => ({ params: { bereich, seite: i === 0 ? undefined : `seite/${i + 1}` } }));
+  });
+}
+const { bereich, seite } = Astro.params;
+const nr = seite ? Number(seite.split('/')[1]) : 1;
+const liste = (await berichte()).filter((b) => b.data.bereich === bereich);
+---
+<AktuellesUebersicht titel={`Aktuelles: ${bereichName(bereich!)}`} liste={ausschnitt(liste, nr)} seite={nr} seiten={seitenzahl(liste.length)} basis={`/aktuelles/bereich/${bereich}`} aktiv={bereich} jahre={await jahreListe()} />

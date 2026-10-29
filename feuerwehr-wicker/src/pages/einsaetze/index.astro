@@ -1,0 +1,6 @@
+---
+import EinsaetzeJahr from '../../components/EinsaetzeJahr.astro';
+import { einsaetze, einsatzJahr } from '../../lib/inhalte';
+const neuestes = einsatzJahr((await einsaetze())[0]);
+---
+<EinsaetzeJahr jahr={neuestes} startseite />

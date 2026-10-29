@@ -1,0 +1,30 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { SITE } from '../lib/site';
+---
+<Base title="Impressum" description="Impressum der Website der Freiwilligen Feuerwehr Flörsheim-Wicker.">
+  <PageHero titel="Impressum" krumen={[{ label: 'Impressum' }]} />
+  <div class="container--schmal section prose">
+    <p class="hinweis"><strong>Entwurf / Gerüst:</strong> Die mit <mark>[KLÄREN]</mark> markierten Angaben müssen vor dem Livegang mit Wehrführung und Vereinsvorstand abgestimmt werden. Siehe Dokument „Offene Punkte“.</p>
+    <h2>Angaben gemäß § 5 DDG</h2>
+    <p><strong>{SITE.verein}</strong><br />{SITE.strasse}<br />{SITE.plz} {SITE.ort}-{SITE.ortsteil}</p>
+    <p>Vertreten durch den Vorstand: <mark>[KLÄREN: Name 1. Vorsitzende/r]</mark>, <mark>[KLÄREN: Name 2. Vorsitzende/r]</mark></p>
+    <p>Registergericht: <mark>[KLÄREN: Amtsgericht, z. B. Wiesbaden]</mark><br />Registernummer: <mark>[KLÄREN: VR …]</mark></p>
+    <h2>Kontakt</h2>
+    <p>Telefon: {SITE.telefon}<br />Telefax: {SITE.fax}<br />E-Mail: <a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+    <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+    <p><mark>[KLÄREN: Name]</mark><br />{SITE.strasse}<br />{SITE.plz} {SITE.ort}-{SITE.ortsteil}</p>
+    <h2>Hinweis zur Einsatzabteilung</h2>
+    <p>Die Freiwillige Feuerwehr Flörsheim-Wicker ist als Einsatzabteilung Teil der Feuerwehr der Stadt Flörsheim am Main (öffentliche Einrichtung der Stadt). Der Verein „{SITE.verein}“ betreibt diese Website. <mark>[KLÄREN: Wer ist Betreiber – Verein oder Stadt? Abstimmung mit der Stadt Flörsheim.]</mark></p>
+    <h2>Haftung für Inhalte</h2>
+    <p>Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Wir sind jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden entsprechender Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
+    <h2>Haftung für Links</h2>
+    <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p>
+    <h2>Urheberrecht und Bildrechte</h2>
+    <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Fotos: Freiwillige Feuerwehr Flörsheim-Wicker, sofern nicht anders angegeben.</p>
+    <h2>Webdesign &amp; Technik</h2>
+    <p>Neugestaltung 2026 (statische Website, ohne Datenbank und ohne Tracking). Grundlage der Inhalte ist die frühere Website, programmiert von Thomas Mühl (TheTwisters EDV-Service), Grafik &amp; Design Tobias Heimbuch.</p>
+  </div>
+</Base>
+<style>mark { background: #ffe58a; padding: 0 .2em; border-radius: 3px; }</style>

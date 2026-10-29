@@ -1,0 +1,8 @@
+---
+import EinsaetzeJahr from '../../../components/EinsaetzeJahr.astro';
+import { einsaetze, einsatzJahr } from '../../../lib/inhalte';
+export async function getStaticPaths() {
+  return [...new Set((await einsaetze()).map(einsatzJahr))].map((j) => ({ params: { jahr: String(j) } }));
+}
+---
+<EinsaetzeJahr jahr={Number(Astro.params.jahr)} />

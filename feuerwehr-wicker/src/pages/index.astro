@@ -1,0 +1,191 @@
+---
+import Base from '../layouts/Base.astro';
+import BerichtKarte from '../components/BerichtKarte.astro';
+import EinsatzListe from '../components/EinsatzListe.astro';
+import TerminListe from '../components/TerminListe.astro';
+import { berichte, einsaetze, kommendeTermine, einsatzJahr, heute } from '../lib/inhalte';
+import { SITE, UEBUNGSZEITEN } from '../lib/site';
+
+const alleBerichte = await berichte();
+const neueste = alleBerichte.slice(0, 6);
+const alleEinsaetze = await einsaetze();
+const jahr = heute().getUTCFullYear();
+const diesesJahr = alleEinsaetze.filter((e) => einsatzJahr(e) === jahr);
+const letzte = alleEinsaetze.slice(0, 5);
+const naechste = await kommendeTermine(5);
+const neubau = alleBerichte.filter((b) => b.data.bereich === 'neubau').slice(0, 1)[0];
+const seitGruendung = jahr - SITE.gegruendet;
+---
+<Base>
+  <section class="hero">
+    <img class="hero__bild" src="/bilder/archiv/5212_20240512173811_401608.webp" alt="Gruppenfoto der Einsatzabteilung der Feuerwehr Wicker vor dem Feuerwehrhaus" fetchpriority="high" width="1600" height="900" />
+    <div class="hero__verlauf" aria-hidden="true"></div>
+    <div class="container hero__inhalt">
+      <p class="eyebrow hero__eyebrow">Freiwillige Feuerwehr Flörsheim-Wicker</p>
+      <h1>365 Tage.<br />24 Stunden.<br /><span>Ehrenamtlich für Sie da.</span></h1>
+      <p class="hero__text">Wir löschen, retten, bergen und schützen – in Wicker, in Flörsheim und im ganzen Main-Taunus-Kreis. Seit {SITE.gegruendet}.</p>
+      <div class="hero__knoepfe">
+        <a class="btn btn--rot" href="/mitmachen">Mitmachen bei der Feuerwehr</a>
+        <a class="btn btn--hell" href="/einsaetze">Aktuelle Einsätze</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="zahlen" aria-label="Die Feuerwehr Wicker in Zahlen">
+    <div class="container zahlen__grid">
+      <div class="zahl"><strong>{diesesJahr.length}</strong><span>Einsätze {jahr}</span></div>
+      <div class="zahl"><strong>{seitGruendung}</strong><span>Jahre seit Gründung</span></div>
+      <div class="zahl"><strong>100&nbsp;%</strong><span>ehrenamtlich</span></div>
+      <a class="zahl zahl--notruf" href="tel:112"><strong>112</strong><span>Notruf – Feuer &amp; Rettung</span></a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Neuigkeiten</p>
+          <h2>Aktuelles aus Wicker</h2>
+        </div>
+        <a class="link-pfeil" href="/aktuelles">Alle Berichte</a>
+      </div>
+      <div class="grid grid-3">
+        {neueste.map((b, i) => <BerichtKarte b={b} gross={i === 0} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--grau">
+    <div class="container zwei-spalten">
+      <div>
+        <div class="section-head">
+          <div><p class="eyebrow">Einsätze</p><h2>Letzte Alarmierungen</h2></div>
+          <a class="link-pfeil" href="/einsaetze">Alle Einsätze</a>
+        </div>
+        <EinsatzListe liste={letzte} kompakt />
+      </div>
+      <div>
+        <div class="section-head">
+          <div><p class="eyebrow">Termine</p><h2>Demnächst</h2></div>
+          <a class="link-pfeil" href="/termine">Kalender</a>
+        </div>
+        {naechste.length ? <TerminListe liste={naechste} /> : <p>Aktuell sind keine Termine eingetragen.</p>}
+      </div>
+    </div>
+  </section>
+
+  <section class="section neubau-teaser">
+    <div class="container neubau-teaser__grid">
+      <div class="neubau-teaser__bild">
+        <img src="/bilder/archiv/5941_20260221173618_800932.webp" alt="Spatenstich für das neue Feuerwehrhaus im Prälat-Müller-Weg" loading="lazy" width="800" height="530" />
+      </div>
+      <div>
+        <p class="eyebrow">Großprojekt</p>
+        <h2>Ein neues Zuhause für die Feuerwehr Wicker</h2>
+        <p>Im Prälat-Müller-Weg entsteht unser neues Feuerwehrhaus: mehr Platz für Fahrzeuge, moderne Hygiene- und Schulungsbereiche und ein Jugendraum. Spatenstich war im Februar 2026, die Fertigstellung ist für 2027 geplant.</p>
+        <ol class="zeitstrahl">
+          <li class="erledigt"><strong>04/2025</strong> Baugenehmigung</li>
+          <li class="erledigt"><strong>02/2026</strong> Spatenstich</li>
+          <li class="erledigt"><strong>2026</strong> Richtfest</li>
+          <li><strong>2027</strong> Einzug</li>
+        </ol>
+        <div class="hero__knoepfe">
+          <a class="btn btn--rot" href="/neubau">Alles zum Neubau</a>
+          {neubau && <a class="btn btn--rand" href={`/aktuelles/${neubau.id}`}>Bautagebuch: {neubau.data.title}</a>}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--dunkel mitmachen">
+    <div class="container">
+      <div class="section-head">
+        <div><p class="eyebrow" style="color:#ff8a98">Mitmachen</p><h2>Für jedes Alter die richtige Gruppe</h2></div>
+        <a class="btn btn--rot" href="/mitmachen">Jetzt informieren</a>
+      </div>
+      <div class="grid grid-4">
+        {UEBUNGSZEITEN.map((u) => (
+          <a class="gruppe" href={u.link}>
+            <h3>{u.gruppe}</h3>
+            {u.alter && <p class="gruppe__alter">{u.alter}</p>}
+            <p>{u.zeit}</p>
+            <span class="link-pfeil">Mehr erfahren</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container info-kacheln">
+      <a class="info-kachel" href="/buergerinfo/verhalten-im-notfall">
+        <span class="info-kachel__icon" aria-hidden="true">☎</span>
+        <h3>Richtig Notruf absetzen</h3>
+        <p>Wo? Was? Wie viele? Welche Verletzungen? Warten auf Rückfragen!</p>
+      </a>
+      <a class="info-kachel" href="/buergerinfo/brandschutz">
+        <span class="info-kachel__icon" aria-hidden="true">🔥</span>
+        <h3>Brandschutz-Tipps</h3>
+        <p>Rauchmelder, Grillen, Silvester, Advent – so bleiben Sie sicher.</p>
+      </a>
+      <a class="info-kachel" href="/100-jahre">
+        <span class="info-kachel__icon" aria-hidden="true">★</span>
+        <h3>100 Jahre Feuerwehr Wicker</h3>
+        <p>1925 – 2025: Rückblick auf unser Jubiläumsjahr.</p>
+      </a>
+      <a class="info-kachel" href="/verein">
+        <span class="info-kachel__icon" aria-hidden="true">♥</span>
+        <h3>Förderverein</h3>
+        <p>Unterstützen Sie die Feuerwehr als förderndes Mitglied.</p>
+      </a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { position: relative; min-height: min(78vh, 720px); display: flex; align-items: flex-end; color: #fff; overflow: hidden; background: var(--anthrazit); }
+  .hero__bild { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 35%; }
+  .hero__verlauf { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(14, 15, 17, .92) 0%, rgba(14, 15, 17, .65) 45%, rgba(14, 15, 17, .15) 100%), linear-gradient(0deg, rgba(14, 15, 17, .8), transparent 50%); }
+  .hero__inhalt { position: relative; padding-block: 5rem 4rem; }
+  .hero__eyebrow { color: #ff8a98; }
+  .hero h1 { color: #fff; font-size: clamp(2.6rem, 6.5vw, 5rem); text-transform: uppercase; line-height: .98; max-width: 14ch; }
+  .hero h1 span { color: #ff4a5f; }
+  .hero__text { font-size: clamp(1.1rem, 1.6vw, 1.3rem); max-width: 46ch; color: #e1e3e6; }
+  .hero__knoepfe { display: flex; gap: .8rem; flex-wrap: wrap; margin-top: 1.6rem; }
+
+  .zahlen { background: var(--rot); color: #fff; }
+  .zahlen__grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .zahl { padding: 1.6rem 1rem; display: flex; flex-direction: column; align-items: center; text-align: center; border-right: 1px solid rgba(255, 255, 255, .2); color: #fff; text-decoration: none; }
+  .zahl:last-child { border-right: 0; }
+  .zahl strong { font-family: var(--font-head); font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1; }
+  .zahl span { font-size: .95rem; opacity: .92; }
+  .zahl--notruf { background: var(--rot-dunkel); }
+  .zahl--notruf:hover { background: #7d0819; color: #fff; }
+  @media (max-width: 700px) { .zahlen__grid { grid-template-columns: repeat(2, 1fr); } .zahl:nth-child(2) { border-right: 0; } .zahl:nth-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,.2); } }
+
+  .zwei-spalten { display: grid; gap: 3rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }
+
+  .neubau-teaser__grid { display: grid; gap: 3rem; align-items: center; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }
+  .neubau-teaser__bild img { border-radius: var(--radius); box-shadow: var(--schatten-hover); aspect-ratio: 3/2; object-fit: cover; width: 100%; }
+  .zeitstrahl { list-style: none; padding: 0; margin: 1.5rem 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: .3rem; counter-reset: s; }
+  .zeitstrahl li { position: relative; padding-top: 1.4rem; font-size: .92rem; color: var(--text-2); }
+  .zeitstrahl li::before { content: ''; position: absolute; top: .3rem; left: 0; right: 0; height: 4px; background: var(--linie); border-radius: 2px; }
+  .zeitstrahl li::after { content: ''; position: absolute; top: 0; left: 0; width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 3px solid var(--linie); }
+  .zeitstrahl li.erledigt::before { background: var(--rot); }
+  .zeitstrahl li.erledigt::after { border-color: var(--rot); background: var(--rot); }
+  .zeitstrahl strong { display: block; color: var(--anthrazit); font-family: var(--font-head); font-size: 1.15rem; }
+
+  .gruppe { display: flex; flex-direction: column; gap: .3rem; padding: 1.5rem; border-radius: var(--radius); background: var(--anthrazit-2); border: 1px solid #33373d; color: #c9cdd1; text-decoration: none; transition: .2s; }
+  .gruppe:hover { border-color: var(--rot); transform: translateY(-3px); color: #c9cdd1; }
+  .gruppe h3 { margin: 0; color: #fff; }
+  .gruppe p { margin: 0; }
+  .gruppe__alter { color: #ff8a98; font-weight: 700; }
+  .gruppe .link-pfeil { color: #fff; margin-top: auto; padding-top: .6rem; }
+
+  .info-kacheln { display: grid; gap: 1.2rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+  .info-kachel { padding: 1.5rem; border-radius: var(--radius); border: 1px solid var(--linie); text-decoration: none; color: var(--text); transition: .2s; }
+  .info-kachel:hover { border-color: var(--rot); box-shadow: var(--schatten); color: var(--text); }
+  .info-kachel__icon { width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; background: var(--rot-hell); color: var(--rot); font-size: 1.4rem; margin-bottom: .8rem; }
+  .info-kachel h3 { font-size: 1.35rem; margin-bottom: .3rem; }
+  .info-kachel p { color: var(--text-2); margin: 0; font-size: .97rem; }
+</style>

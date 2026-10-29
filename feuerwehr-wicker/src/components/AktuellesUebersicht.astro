@@ -1,0 +1,46 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from './PageHero.astro';
+import BerichtKarte from './BerichtKarte.astro';
+import { type Bericht, bereichName } from '../lib/inhalte';
+interface Props { liste: Bericht[]; seite: number; seiten: number; basis: string; aktiv?: string; jahr?: string; jahre: string[]; titel?: string }
+const { liste, seite, seiten, basis, aktiv, jahr, jahre, titel = 'Aktuelles' } = Astro.props;
+const FILTER = ['einsatzabteilung', 'jugendfeuerwehr', 'minis', 'verein', 'neubau', 'jubilaeum'];
+const seitenUrl = (n: number) => (n === 1 ? basis : `${basis.replace(/\/$/, '')}/seite/${n}`.replace('/aktuelles/seite/seite', '/aktuelles/seite'));
+---
+<Base title={seite > 1 ? `${titel} – Seite ${seite}` : titel} description="Berichte und Neuigkeiten der Freiwilligen Feuerwehr Flörsheim-Wicker: Übungen, Ausbildung, Jugendfeuerwehr, Minilöscher, Verein und Neubau.">
+  <PageHero titel={titel} eyebrow="Neuigkeiten" text="Berichte aus Einsatzabteilung, Jugendfeuerwehr, Minilöscher und Verein – vom aktuellen Bautagebuch bis zurück ins Jahr 2002." krumen={[{ label: 'Aktuelles', href: '/aktuelles' }, ...(aktiv ? [{ label: bereichName(aktiv) }] : jahr ? [{ label: jahr }] : [])]} />
+  <div class="container section">
+    <nav class="chips" aria-label="Nach Bereich filtern">
+      <a class="chip" href="/aktuelles" aria-current={!aktiv && !jahr ? 'page' : undefined}>Alle</a>
+      {FILTER.map((b) => <a class="chip" href={`/aktuelles/bereich/${b}`} aria-current={aktiv === b ? 'page' : undefined}>{bereichName(b)}</a>)}
+    </nav>
+    <div class="grid grid-3">
+      {liste.map((b) => <BerichtKarte b={b} />)}
+    </div>
+    {seiten > 1 && (
+      <nav class="pagination" aria-label="Seiten">
+        {seite > 1 && <a href={seitenUrl(seite - 1)} rel="prev">← Zurück</a>}
+        {Array.from({ length: seiten }, (_, i) => i + 1)
+          .filter((n) => n === 1 || n === seiten || Math.abs(n - seite) <= 2)
+          .map((n, i, arr) => (
+            <>
+              {i > 0 && n - arr[i - 1] > 1 && <span aria-hidden="true">…</span>}
+              <a href={seitenUrl(n)} aria-current={n === seite ? 'page' : undefined}>{n}</a>
+            </>
+          ))}
+        {seite < seiten && <a href={seitenUrl(seite + 1)} rel="next">Weiter →</a>}
+      </nav>
+    )}
+    <nav class="jahre" aria-label="Archiv nach Jahr">
+      <h2>Archiv nach Jahren</h2>
+      <div class="chips">
+        {jahre.map((j) => <a class="chip" href={`/aktuelles/${j}`} aria-current={jahr === j ? 'page' : undefined}>{j}</a>)}
+      </div>
+    </nav>
+  </div>
+</Base>
+<style>
+  .jahre { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--linie); }
+  .jahre h2 { font-size: 1.5rem; }
+</style>
