@@ -1,24 +1,16 @@
 ---
-const { hell = false } = Astro.props;
+// Offizielles Logo „Feuerwehren Stadt Flörsheim am Main“ (public/logo-feuerwehren-floersheim.*)
+interface Props { hoehe?: number; zusatz?: boolean }
+const { hoehe = 34, zusatz = true } = Astro.props;
+const breite = Math.round(hoehe * (2265 / 434));
 ---
-<span class:list={['logo', { 'logo--hell': hell }]}>
-  <svg class="logo__wappen" viewBox="0 0 64 64" width="48" height="48" aria-hidden="true">
-    <path d="M32 3 7 11v19c0 15.5 10.6 26.5 25 31 14.4-4.5 25-15.5 25-31V11L32 3Z" fill="#c8102e"/>
-    <path d="M32 7.3 11 14v16c0 13 8.6 22.4 21 26.6C44.4 52.4 53 43 53 30V14L32 7.3Z" fill="none" stroke="#fff" stroke-width="2" opacity=".55"/>
-    <path d="m15.5 20 6.4 24h4.3l5.8-17.2L37.8 44h4.3l6.4-24h-5.2l-3.8 15.6L34.3 20h-4.6l-5.2 15.6L20.7 20Z" fill="#fff"/>
-  </svg>
-  <span class="logo__text">
-    <span class="logo__zeile1">Feuerwehr Wicker</span>
-    <span class="logo__zeile2">Freiwillige Feuerwehr Flörsheim-Wicker</span>
-  </span>
+<span class="logo">
+  <img src="/logo-feuerwehren-floersheim.webp" alt="Feuerwehren Stadt Flörsheim am Main" width={breite} height={hoehe} style={`height:${hoehe}px`} />
+  {zusatz && <span class="logo__zusatz">Freiwillige Feuerwehr<br />Wicker</span>}
 </span>
 <style>
-  .logo { display: inline-flex; align-items: center; gap: .7rem; }
-  .logo__wappen { flex: none; filter: drop-shadow(0 2px 3px rgba(0,0,0,.15)); }
-  .logo__text { display: flex; flex-direction: column; line-height: 1.05; }
-  .logo__zeile1 { font-family: var(--font-head); font-weight: 700; font-size: 1.6rem; letter-spacing: .02em; text-transform: uppercase; color: var(--anthrazit); }
-  .logo__zeile2 { font-size: .78rem; color: var(--text-2); letter-spacing: .02em; margin-top: .15rem; }
-  .logo--hell .logo__zeile1 { color: #fff; }
-  .logo--hell .logo__zeile2 { color: #aab0b6; }
-  @media (max-width: 420px) { .logo__zeile2 { display: none; } .logo__zeile1 { font-size: 1.4rem; } }
+  .logo { display: inline-flex; align-items: center; gap: .85rem; }
+  .logo img { width: auto; max-width: 100%; }
+  .logo__zusatz { font-size: .74rem; line-height: 1.15; font-weight: 600; color: var(--text-2); letter-spacing: 0; padding-left: .85rem; border-left: 1px solid var(--linie); }
+  @media (max-width: 520px) { .logo__zusatz { display: none; } }
 </style>

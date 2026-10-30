@@ -172,13 +172,13 @@ const NAV = [
 </script>
 
 <style>
-  .demo-leiste { background: var(--gelb); color: #000; text-align: center; padding: .55rem 1rem; font-size: .93rem; }
-  .demo-leiste a { color: #000; font-weight: 700; margin-left: .5rem; }
+  .demo-leiste { background: #fff6e0; color: #6b4a00; text-align: center; padding: .55rem 1rem; font-size: .93rem; }
+  .demo-leiste a { color: #6b4a00; font-weight: 700; margin-left: .5rem; }
   .intern { display: grid; gap: 2rem; padding-block: 2.5rem 4rem; grid-template-columns: minmax(0, 1fr); }
   @media (min-width: 900px) { .intern { grid-template-columns: 270px minmax(0, 1fr); } .intern-nav { position: sticky; top: 100px; align-self: start; } }
-  .profil { display: flex; gap: .8rem; align-items: center; padding: 1rem; background: var(--anthrazit); color: #fff; border-radius: var(--radius); margin-bottom: 1rem; }
-  .profil__avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--rot); display: grid; place-items: center; font-weight: 700; font-family: var(--font-head); font-size: 1.3rem; flex: none; }
-  .profil div span { display: block; font-size: .82rem; color: #b8bdc2; }
+  .profil { display: flex; gap: .8rem; align-items: center; padding: 1rem; background: var(--flaeche); border-radius: var(--radius); margin-bottom: 1rem; }
+  .profil__avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--rot); display: grid; place-items: center; font-weight: 600; font-size: 1.1rem; color: #fff; flex: none; }
+  .profil div span { display: block; font-size: .82rem; color: var(--text-2); }
   .intern-nav ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .2rem; }
   .intern-nav a { display: flex; justify-content: space-between; align-items: center; padding: .7rem .9rem; border-radius: 10px; text-decoration: none; color: var(--text); font-weight: 600; }
   .intern-nav a:hover { background: var(--flaeche); }
@@ -188,10 +188,11 @@ const NAV = [
   .unter { color: var(--text-2); }
   .klein { font-size: .85rem; color: var(--text-2); }
   .kacheln { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
-  .kachel { padding: 1.2rem; border-radius: var(--radius); border: 1px solid var(--linie); text-decoration: none; color: var(--text); border-top: 4px solid var(--anthrazit); }
-  .kachel strong { display: block; font-family: var(--font-head); font-size: 2.4rem; line-height: 1; }
+  .kachel { padding: 1.3rem; border-radius: var(--radius); background: var(--flaeche); color: var(--text); }
+  .kachel:hover { text-decoration: none; }
+  .kachel strong { display: block; font-size: 2.4rem; font-weight: 700; letter-spacing: -.04em; line-height: 1.05; }
   .kachel span { font-size: .9rem; color: var(--text-2); }
-  .kachel--warn { border-top-color: var(--rot); }
+  .kachel--warn strong { color: var(--rot); }
   .warnbox { background: #fff1f2; border: 1px solid #f6b4bd; border-radius: var(--radius); padding: 1rem 1.3rem; margin-bottom: 1.5rem; }
   .warnbox h2 { font-size: 1.3rem; color: var(--rot); }
   .naechster { font-size: 1.1rem; }
@@ -199,7 +200,7 @@ const NAV = [
   .dienstliste li { display: grid; grid-template-columns: 70px 1fr auto; gap: 1rem; align-items: center; border: 1px solid var(--linie); border-radius: var(--radius-s); padding: .8rem 1rem; border-left: 5px solid var(--linie); }
   .dienstliste li[data-antwort='ja'] { border-left-color: var(--gruen); }
   .dienstliste li[data-antwort='nein'] { border-left-color: var(--rot); opacity: .75; }
-  .dienst__datum { text-align: center; font-family: var(--font-head); }
+  .dienst__datum { text-align: center; }
   .dienst__datum strong { display: block; font-size: 1.4rem; }
   .dienst__info span { display: block; font-size: .9rem; color: var(--text-2); }
   .dienst__knoepfe { display: flex; gap: .4rem; }

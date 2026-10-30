@@ -20,7 +20,8 @@ const maxJ = Math.max(...proJahr.map((x) => x.n));
     </nav>
     <EinsatzStatistik liste={liste} jahr={jahr} />
     <h2>Alle Einsätze {jahr}</h2>
-    <EinsatzListe liste={liste} />
+    <p class="tipp">Tippen Sie auf einen Einsatz, um den Bericht direkt hier zu lesen.</p>
+    <EinsatzListe liste={liste} aufklappbar />
     {startseite && (
       <section class="verlauf" aria-labelledby="verlauf-titel">
         <h2 id="verlauf-titel">Einsätze pro Jahr seit {proJahr[0].j}</h2>
@@ -40,9 +41,10 @@ const maxJ = Math.max(...proJahr.map((x) => x.n));
 </Base>
 <style>
   .verlauf { margin-top: 4rem; }
+  .tipp { color: var(--text-2); margin: -.4rem 0 1rem; }
   .verlauf__balken { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 4px; height: 220px; align-items: end; }
   .verlauf__spalte { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; text-decoration: none; color: var(--text-2); }
-  .verlauf__b { width: 100%; background: var(--anthrazit); border-radius: 4px 4px 0 0; transition: background .15s; }
+  .verlauf__b { width: 100%; background: var(--linie); border-radius: 4px; transition: background .15s; }
   .verlauf__spalte:hover .verlauf__b { background: var(--rot); }
   .verlauf__wert { font-size: .7rem; font-weight: 700; }
   .verlauf__j { font-size: .72rem; margin-top: .3rem; }

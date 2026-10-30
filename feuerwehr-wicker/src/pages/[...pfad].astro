@@ -115,11 +115,11 @@ const neubauTagebuch = s.data.pfad === '/neubau' ? (await berichte()).filter((b)
 </Base>
 <style>
   .unterseiten { margin-top: 3rem; }
-  .unterseite { display: flex; flex-direction: column; border: 1px solid var(--linie); border-radius: var(--radius); overflow: hidden; text-decoration: none; color: var(--text); background: #fff; transition: .2s; }
-  .unterseite:hover { border-color: var(--rot); box-shadow: var(--schatten); color: var(--text); }
+  .unterseite { display: flex; flex-direction: column; border-radius: var(--radius); overflow: hidden; color: var(--text); background: var(--flaeche); transition: transform .35s cubic-bezier(.2,.8,.2,1); }
+  .unterseite:hover { transform: scale(1.02); color: var(--text); text-decoration: none; }
   .unterseite img { aspect-ratio: 16/9; object-fit: cover; width: 100%; }
   .unterseite__text { padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: .3rem; }
-  .unterseite__text strong { font-family: var(--font-head); font-size: 1.3rem; }
+  .unterseite__text strong { font-size: 1.15rem; letter-spacing: -.02em; }
   .unterseite__text span { font-size: .92rem; color: var(--text-2); }
   .stand { font-size: .85rem; color: var(--text-2); margin-top: 3rem; }
   .seitenleiste .terminliste { gap: .4rem; }

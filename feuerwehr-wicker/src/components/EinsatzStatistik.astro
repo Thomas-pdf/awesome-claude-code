@@ -30,14 +30,14 @@ const personenStunden = Math.round(liste.reduce((s, e) => s + ((e.data.dauerMinu
 <style>
   .statistik { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); margin-bottom: 3rem; align-items: end; }
   .statistik__kennzahlen { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: .8rem; }
-  .statistik__kennzahlen div { background: var(--flaeche); border-radius: var(--radius-s); padding: 1rem; border-top: 4px solid var(--anthrazit); }
-  .statistik__kennzahlen .art-Brand { border-top-color: var(--rot); }
-  .statistik__kennzahlen .art-Hilfeleistung { border-top-color: var(--blau); }
-  .statistik__kennzahlen strong { display: block; font-family: var(--font-head); font-size: 2rem; line-height: 1; }
+  .statistik__kennzahlen div { background: var(--flaeche); border-radius: var(--radius-s); padding: 1.1rem 1.2rem; }
+  .statistik__kennzahlen .art-Brand strong { color: var(--rot); }
+  .statistik__kennzahlen .art-Hilfeleistung strong { color: var(--blau); }
+  .statistik__kennzahlen strong { display: block; font-size: 2.2rem; font-weight: 700; letter-spacing: -.04em; line-height: 1.05; font-variant-numeric: tabular-nums; }
   .statistik__kennzahlen span { font-size: .88rem; color: var(--text-2); }
   .balken { margin: 0; display: grid; grid-template-columns: repeat(12, 1fr); gap: .35rem; height: 200px; align-items: end; }
   .balken__spalte { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
-  .balken__balken { width: 100%; background: linear-gradient(180deg, var(--rot), var(--rot-dunkel)); border-radius: 5px 5px 0 0; min-height: 2px; }
+  .balken__balken { width: 100%; background: var(--rot); border-radius: 5px; min-height: 2px; }
   .balken__wert { font-size: .8rem; font-weight: 700; }
   .balken__label { font-size: .75rem; color: var(--text-2); margin-top: .3rem; }
 </style>

@@ -1,32 +1,14 @@
 ---
 import { NAVIGATION } from '../lib/navigation';
-import { SITE } from '../lib/site';
 import Logo from './Logo.astro';
 const pfad = Astro.url.pathname.replace(/\/$/, '') || '/';
 const aktiv = (href: string) => (href === '/' ? pfad === '/' : pfad === href || pfad.startsWith(href + '/'));
 ---
-<div class="notruf-leiste">
-  <div class="container notruf-leiste__inner">
-    <a class="notruf" href="tel:112" aria-label="Notruf 112 anrufen">
-      <span class="notruf__puls" aria-hidden="true"></span>
-      <strong>Notruf 112</strong><span class="notruf__text"> – Feuerwehr &amp; Rettungsdienst</span>
-    </a>
-    <div class="notruf-leiste__rechts">
-      <a href="/kontakt">{SITE.strasse}, {SITE.ortsteil}</a>
-      <a href={SITE.facebook} rel="noopener" target="_blank" aria-label="Facebook (externer Link)">Facebook</a>
-      <a href="/intern" class="intern-link">Mitglieder</a>
-    </div>
-  </div>
-</div>
 <header class="site-header" data-header>
   <div class="container site-header__inner">
-    <a href="/" class="marke" aria-label="Startseite – Feuerwehr Wicker">
-      <Logo />
+    <a href="/" class="marke" aria-label="Startseite – Freiwillige Feuerwehr Flörsheim-Wicker">
+      <Logo hoehe={30} />
     </a>
-    <button class="menue-knopf" type="button" aria-expanded="false" aria-controls="hauptnavigation" data-menu-toggle>
-      <span class="menue-knopf__icon" aria-hidden="true"><span></span><span></span><span></span></span>
-      <span class="menue-knopf__text">Menü</span>
-    </button>
     <nav id="hauptnavigation" class="hauptnav" aria-label="Hauptnavigation" data-nav>
       <ul class="hauptnav__liste">
         {NAVIGATION.map((item) => (
@@ -35,7 +17,7 @@ const aktiv = (href: string) => (href === '/' ? pfad === '/' : pfad === href || 
               <>
                 <button type="button" class:list={['hauptnav__link', { aktiv: item.kinder.some((k) => aktiv(k.href)) }]} aria-expanded="false" data-sub-toggle>
                   {item.label}
-                  <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" /></svg>
+                  <svg width="10" height="10" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" /></svg>
                 </button>
                 <div class="untermenue">
                   <ul>
@@ -57,13 +39,21 @@ const aktiv = (href: string) => (href === '/' ? pfad === '/' : pfad === href || 
         ))}
         <li class="hauptnav__suche">
           <a href="/suche" class="hauptnav__link" aria-label="Suche">
-            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m15.5 15.5 5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+            <svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="m15.5 15.5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             <span class="nur-mobil">Suche</span>
           </a>
         </li>
-        <li class="hauptnav__cta"><a href="/mitmachen" class="btn btn--rot">Mitmachen</a></li>
+        <li class="nur-mobil-li"><a href="/mitmachen" class="hauptnav__link">Mitmachen</a></li>
+        <li class="nur-mobil-li"><a href="/intern" class="hauptnav__link">Mitgliederbereich</a></li>
       </ul>
     </nav>
+    <div class="aktionen">
+      <a class="notruf" href="tel:112" aria-label="Notruf 112 anrufen"><span class="notruf__punkt" aria-hidden="true"></span>Notruf 112</a>
+      <a class="mitmachen" href="/mitmachen">Mitmachen</a>
+      <button class="menue-knopf" type="button" aria-expanded="false" aria-controls="hauptnavigation" aria-label="Menü" data-menu-toggle>
+        <span class="menue-knopf__icon" aria-hidden="true"><span></span><span></span></span>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -94,74 +84,67 @@ const aktiv = (href: string) => (href === '/' ? pfad === '/' : pfad === href || 
       if (nav?.classList.contains('offen')) toggle?.click();
     }
   });
-  const header = document.querySelector('[data-header]');
-  const onScroll = () => header?.classList.toggle('gescrollt', window.scrollY > 10);
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
 </script>
 
 <style>
-  .notruf-leiste { background: var(--anthrazit); color: #d6d9dc; font-size: .9rem; }
-  .notruf-leiste__inner { display: flex; justify-content: space-between; align-items: center; min-height: 40px; gap: 1rem; }
-  .notruf { display: inline-flex; align-items: center; gap: .55rem; color: #fff; text-decoration: none; font-weight: 600; padding: .3rem 0; }
-  .notruf strong { background: var(--rot); padding: .15rem .6rem; border-radius: 6px; font-family: var(--font-head); font-size: 1.15rem; letter-spacing: .03em; }
-  .notruf:hover { color: #fff; }
-  .notruf:hover strong { background: var(--rot-dunkel); }
-  .notruf__puls { width: 10px; height: 10px; border-radius: 50%; background: #ff3b52; box-shadow: 0 0 0 0 rgba(255, 59, 82, .7); animation: puls 2s infinite; }
-  @keyframes puls { 70% { box-shadow: 0 0 0 10px rgba(255, 59, 82, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 59, 82, 0); } }
-  .notruf-leiste__rechts { display: flex; gap: 1.4rem; }
-  .notruf-leiste__rechts a { color: #d6d9dc; text-decoration: none; }
-  .notruf-leiste__rechts a:hover { color: #fff; text-decoration: underline; }
-  @media (max-width: 760px) { .notruf-leiste__rechts a:not(.intern-link), .notruf__text { display: none; } }
-
-  .site-header { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, .97); backdrop-filter: saturate(1.4) blur(8px); border-bottom: 1px solid var(--linie); transition: box-shadow .2s; }
-  .site-header.gescrollt { box-shadow: 0 6px 24px rgba(0, 0, 0, .08); }
+  .site-header { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, .8); backdrop-filter: saturate(1.8) blur(20px); -webkit-backdrop-filter: saturate(1.8) blur(20px); border-bottom: 1px solid rgba(0, 0, 0, .08); }
   :global(body.menue-offen) { overflow: hidden; }
-  .site-header__inner { display: flex; align-items: center; justify-content: space-between; min-height: 76px; gap: 1rem; }
-  .marke { text-decoration: none; color: inherit; display: flex; }
+  .site-header__inner { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 1.2rem; }
+  .marke { display: flex; flex: none; }
+  .marke:hover { text-decoration: none; }
 
-  .hauptnav__liste { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: .15rem; }
+  .hauptnav__liste { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: .1rem; }
   .hauptnav__link {
-    display: inline-flex; align-items: center; gap: .35rem; padding: .6rem .8rem; border-radius: 8px; font: 600 1.02rem var(--font-body);
-    color: var(--text); text-decoration: none; background: none; border: 0; cursor: pointer;
+    display: inline-flex; align-items: center; gap: .3rem; padding: .45rem .7rem; border-radius: 8px; font: 400 .9rem var(--font);
+    letter-spacing: -.01em; color: var(--text); background: none; border: 0; cursor: pointer; opacity: .88; white-space: nowrap;
   }
-  .hauptnav__link:hover, .hauptnav__link[aria-expanded='true'] { background: var(--flaeche); color: var(--rot); }
-  .hauptnav__link.aktiv { color: var(--rot); box-shadow: inset 0 -3px 0 var(--rot); border-radius: 0; }
-  .hauptnav__link svg { transition: transform .2s; }
+  .hauptnav__link:hover { opacity: 1; text-decoration: none; color: var(--text); }
+  .hauptnav__link.aktiv { color: var(--rot); opacity: 1; font-weight: 600; }
   .hauptnav__link[aria-expanded='true'] svg { transform: rotate(180deg); }
+  .hauptnav__link svg { transition: transform .2s; }
   .hat-kinder { position: relative; }
   .untermenue {
-    position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%); min-width: 320px; background: #fff;
-    border: 1px solid var(--linie); border-radius: var(--radius); box-shadow: var(--schatten-hover); padding: .5rem; display: none;
+    position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%); min-width: 300px; background: rgba(255,255,255,.96);
+    backdrop-filter: blur(20px); border-radius: 18px; box-shadow: 0 20px 60px rgba(0,0,0,.14); padding: .6rem; display: none;
   }
   [aria-expanded='true'] + .untermenue { display: block; }
   .untermenue ul { list-style: none; margin: 0; padding: 0; }
-  .untermenue a { display: block; padding: .6rem .8rem; border-radius: 8px; text-decoration: none; color: var(--text); }
-  .untermenue a:hover, .untermenue a[aria-current='page'] { background: var(--rot-hell); }
-  .untermenue strong { display: block; font-weight: 700; }
-  .untermenue span { display: block; font-size: .88rem; color: var(--text-2); }
-  .hauptnav__cta { margin-left: .5rem; }
-  .nur-mobil { display: none; }
+  .untermenue a { display: block; padding: .6rem .8rem; border-radius: 12px; color: var(--text); }
+  .untermenue a:hover, .untermenue a[aria-current='page'] { background: var(--flaeche); text-decoration: none; }
+  .untermenue strong { display: block; font-weight: 600; font-size: .95rem; }
+  .untermenue span { display: block; font-size: .82rem; color: var(--text-2); }
 
-  .menue-knopf { display: none; align-items: center; gap: .5rem; background: none; border: 1.5px solid var(--linie); border-radius: 10px; padding: .55rem .8rem; font: 700 1rem var(--font-body); color: var(--text); cursor: pointer; }
-  .menue-knopf__icon { display: grid; gap: 4px; width: 20px; }
-  .menue-knopf__icon span { height: 2px; background: currentColor; border-radius: 2px; transition: .2s; }
-  .menue-knopf[aria-expanded='true'] .menue-knopf__icon span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-  .menue-knopf[aria-expanded='true'] .menue-knopf__icon span:nth-child(2) { opacity: 0; }
-  .menue-knopf[aria-expanded='true'] .menue-knopf__icon span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .aktionen { display: flex; align-items: center; gap: .5rem; flex: none; }
+  .notruf { display: inline-flex; align-items: center; gap: .45rem; background: var(--rot); color: #fff; font-weight: 600; font-size: .88rem; padding: .42rem .85rem; border-radius: 999px; }
+  .notruf:hover { background: var(--rot-dunkel); text-decoration: none; color: #fff; }
+  .notruf__punkt { width: 7px; height: 7px; border-radius: 50%; background: #fff; animation: puls 2s infinite; }
+  @keyframes puls { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+  .mitmachen { font-size: .88rem; font-weight: 600; padding: .42rem .85rem; border-radius: 999px; background: var(--flaeche); color: var(--text); }
+  .mitmachen:hover { background: var(--linie-hell); text-decoration: none; }
+  .nur-mobil, .nur-mobil-li { display: none; }
+  @media (max-width: 1240px) { .marke :global(.logo__zusatz) { display: none; } }
 
-  @media (max-width: 1100px) {
-    .menue-knopf { display: inline-flex; }
-    .hauptnav { position: absolute; top: 100%; left: 0; right: 0; height: calc(100dvh - 76px); background: #fff; overflow-y: auto; padding: 1rem 1rem 3rem; display: none; border-top: 1px solid var(--linie); }
-    .hauptnav.offen { display: block; }
-    .hauptnav__liste { flex-direction: column; align-items: stretch; gap: 0; }
-    .hauptnav__liste > li { border-bottom: 1px solid var(--linie); }
-    .hauptnav__link { width: 100%; justify-content: space-between; padding: 1rem .5rem; font-size: 1.15rem; }
-    .hauptnav__link.aktiv { box-shadow: inset 4px 0 0 var(--rot); padding-left: 1rem; }
-    .untermenue { position: static; transform: none; box-shadow: none; border: 0; min-width: 0; padding: 0 0 .8rem .5rem; }
-    .hauptnav__cta { margin: 1.2rem 0 0; border: 0 !important; }
-    .hauptnav__cta .btn { width: 100%; justify-content: center; padding: 1rem; font-size: 1.1rem; }
+  .menue-knopf { display: none; width: 40px; height: 40px; background: none; border: 0; cursor: pointer; padding: 0; }
+  .menue-knopf__icon { display: grid; gap: 7px; width: 18px; margin: auto; }
+  .menue-knopf__icon span { height: 1.5px; background: var(--text); border-radius: 2px; transition: transform .25s; }
+  .menue-knopf[aria-expanded='true'] .menue-knopf__icon span:nth-child(1) { transform: translateY(4.25px) rotate(45deg); }
+  .menue-knopf[aria-expanded='true'] .menue-knopf__icon span:nth-child(2) { transform: translateY(-4.25px) rotate(-45deg); }
+
+  @media (max-width: 1080px) {
+    .menue-knopf { display: block; }
+    .mitmachen { display: none; }
+    .hauptnav { position: absolute; top: 100%; left: 0; right: 0; height: calc(100dvh - 64px); background: #fff; overflow-y: auto; padding: 1rem max(1.25rem, env(safe-area-inset-left, 0px)) 3rem; display: none; }
+    .hauptnav.offen { display: block; animation: einblenden .25s ease; }
+    @keyframes einblenden { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+    .hauptnav__liste { flex-direction: column; align-items: stretch; gap: 0; max-width: 640px; margin: 0 auto; }
+    .hauptnav__liste > li { border-bottom: 1px solid var(--linie-hell); }
+    .hauptnav__link { width: 100%; justify-content: space-between; padding: 1rem .2rem; font-size: 1.5rem; font-weight: 600; letter-spacing: -.02em; opacity: 1; }
+    .untermenue { position: static; transform: none; box-shadow: none; min-width: 0; padding: 0 0 .8rem; background: none; backdrop-filter: none; }
+    .untermenue a { padding: .55rem .2rem; }
+    .untermenue strong { font-size: 1.05rem; }
     .nur-mobil { display: inline; }
+    .nur-mobil-li { display: list-item; }
     .hauptnav__suche .hauptnav__link { justify-content: flex-start; gap: .7rem; }
   }
+  @media (max-width: 400px) { .notruf { padding: .4rem .7rem; font-size: .82rem; } }
 </style>

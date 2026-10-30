@@ -1,37 +1,89 @@
 ---
+import { render } from 'astro:content';
 import { type Einsatz, einsatzUrl, datum, artKlasse } from '../lib/inhalte';
-interface Props { liste: Einsatz[]; kompakt?: boolean }
-const { liste, kompakt = false } = Astro.props;
+interface Props { liste: Einsatz[]; kompakt?: boolean; aufklappbar?: boolean }
+const { liste, kompakt = false, aufklappbar = false } = Astro.props;
+// Berichte vorab rendern, damit sie direkt in der Liste aufgeklappt werden können
+const inhalte = aufklappbar ? await Promise.all(liste.map((e) => render(e))) : [];
+const kuerzel = (art: string) => (art === 'Brand' ? 'B' : art === 'Hilfeleistung' ? 'H' : 'S');
 ---
 <ol class:list={['einsatzliste', { kompakt }]}>
-  {liste.map((e) => (
-    <li class={`einsatz einsatz--${artKlasse(e.data.art)}`}>
-      <a href={einsatzUrl(e)}>
-        <span class="einsatz__art" title={e.data.art}>{e.data.art === 'Brand' ? 'B' : e.data.art === 'Hilfeleistung' ? 'H' : 'S'}</span>
+  {liste.map((e, i) => {
+    const Inhalt = inhalte[i]?.Content;
+    const kopf = (
+      <>
+        <span class="einsatz__art" title={e.data.art}>{kuerzel(e.data.art)}</span>
         <span class="einsatz__haupt">
           <span class="einsatz__stichwort">{e.data.stichwort}</span>
           <span class="einsatz__meta">
             <time datetime={e.data.datum.toISOString()}>{datum(e.data.datum)}{e.data.uhrzeit && `, ${e.data.uhrzeit} Uhr`}</time>
             {!kompakt && e.data.einsatzort && <span>· {e.data.einsatzort}</span>}
             {!kompakt && e.data.dauerMinuten && <span>· {e.data.dauerMinuten} min</span>}
-            {e.data.bilder.length > 0 && <span>· 📷 {e.data.bilder.length}</span>}
+            {e.data.bilder.length > 0 && <span>· {e.data.bilder.length} Fotos</span>}
           </span>
         </span>
         <span class="einsatz__nr">{e.data.nummer.replace('_', ' ')}</span>
-      </a>
-    </li>
-  ))}
+      </>
+    );
+    return (
+      <li class={`einsatz einsatz--${artKlasse(e.data.art)}`} id={`e-${e.id.split('/')[1]}`}>
+        {aufklappbar ? (
+          <details>
+            <summary>{kopf}<span class="einsatz__pfeil" aria-hidden="true"></span></summary>
+            <div class="einsatz__bericht">
+              <dl class="einsatz__daten">
+                {e.data.alarmierung && <div><dt>Alarmierung</dt><dd>{e.data.alarmierung}</dd></div>}
+                {e.data.fahrzeuge && <div><dt>Fahrzeuge</dt><dd>{e.data.fahrzeuge}</dd></div>}
+                {e.data.kraefte && <div><dt>Kräfte FF Wicker</dt><dd>{e.data.kraefte}</dd></div>}
+                {e.data.weitereKraefte && <div><dt>Weitere Kräfte</dt><dd>{e.data.weitereKraefte}</dd></div>}
+              </dl>
+              <div class="prose">{Inhalt ? <Inhalt /> : null}</div>
+              <a class="link-pfeil" href={einsatzUrl(e)}>{e.data.bilder.length ? `Einsatzseite mit ${e.data.bilder.length} Fotos` : 'Einsatzseite öffnen'}</a>
+            </div>
+          </details>
+        ) : (
+          <a href={einsatzUrl(e)}>{kopf}</a>
+        )}
+      </li>
+    );
+  })}
 </ol>
 <style>
-  .einsatzliste { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; }
-  .einsatz a { display: grid; grid-template-columns: auto 1fr auto; gap: 1rem; align-items: center; padding: .85rem 1rem; border-radius: var(--radius-s); background: #fff; border: 1px solid var(--linie); text-decoration: none; color: var(--text); transition: .15s; }
-  .einsatz a:hover { border-color: var(--rot); box-shadow: var(--schatten); }
-  .einsatz__art { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; font-family: var(--font-head); font-weight: 700; font-size: 1.3rem; color: #fff; background: var(--rot); }
+  .einsatzliste { list-style: none; margin: 0; padding: 0; background: var(--weiss); border-radius: var(--radius); box-shadow: inset 0 0 0 1px var(--linie-hell); }
+  .einsatz + .einsatz { border-top: 1px solid var(--linie-hell); }
+  .einsatz > a, .einsatz summary { display: grid; grid-template-columns: auto 1fr auto auto; gap: 1rem; align-items: center; padding: 1rem 1.2rem; color: var(--text); cursor: pointer; list-style: none; }
+  .einsatz summary::-webkit-details-marker { display: none; }
+  .einsatz > a:hover, .einsatz summary:hover { text-decoration: none; background: var(--flaeche); }
+  .einsatz:first-child > a, .einsatz:first-child summary { border-radius: var(--radius) var(--radius) 0 0; }
+  .einsatz__art { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: .85rem; color: #fff; background: var(--rot); }
   .einsatz--hilfe .einsatz__art { background: var(--blau); }
-  .einsatz--sonst .einsatz__art { background: #6b737b; }
-  .einsatz__stichwort { display: block; font-weight: 700; line-height: 1.3; }
-  .einsatz__meta { display: flex; flex-wrap: wrap; gap: .35rem; font-size: .88rem; color: var(--text-2); }
-  .einsatz__nr { font-family: var(--font-head); font-size: 1rem; color: var(--text-2); white-space: nowrap; }
+  .einsatz--sonst .einsatz__art { background: var(--text-3); }
+  .einsatz__stichwort { display: block; font-weight: 600; line-height: 1.3; }
+  .einsatz__meta { display: flex; flex-wrap: wrap; gap: .35rem; font-size: .86rem; color: var(--text-2); }
+  .einsatz__nr { font-size: .85rem; color: var(--text-3); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .einsatz__pfeil { width: 9px; height: 9px; border-right: 1.8px solid var(--text-2); border-bottom: 1.8px solid var(--text-2); transform: rotate(45deg); transition: transform .2s; margin: 0 .3rem; }
+  details[open] .einsatz__pfeil { transform: rotate(-135deg); }
+  details[open] summary { background: var(--flaeche); }
+  .einsatz__bericht { padding: .4rem 1.2rem 1.4rem calc(1.2rem + 34px + 1rem); display: grid; gap: .8rem; }
+  .einsatz__bericht .prose { font-size: 1rem; }
+  .einsatz__bericht .prose :global(p:last-child) { margin-bottom: 0; }
+  .einsatz__daten { margin: .4rem 0 0; display: flex; flex-wrap: wrap; gap: .4rem 1.6rem; font-size: .88rem; }
+  .einsatz__daten dt { color: var(--text-3); font-size: .78rem; }
+  .einsatz__daten dd { margin: 0; color: var(--text); }
   .kompakt .einsatz__nr { display: none; }
-  @media (max-width: 600px) { .einsatz__nr { display: none; } .einsatz a { grid-template-columns: auto 1fr; } }
+  @media (max-width: 600px) {
+    .einsatz__nr { display: none; }
+    .einsatz > a, .einsatz summary { grid-template-columns: auto 1fr auto; padding: .9rem 1rem; }
+    .einsatz__bericht { padding-left: 1rem; }
+  }
 </style>
+<script>
+  // Direktlink auf einen Einsatz (#e-2025-087) klappt ihn automatisch auf
+  const oeffne = () => {
+    const ziel = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    const d = ziel?.querySelector('details');
+    if (d) { d.open = true; ziel!.scrollIntoView({ block: 'center' }); }
+  };
+  oeffne();
+  window.addEventListener('hashchange', oeffne);
+</script>
