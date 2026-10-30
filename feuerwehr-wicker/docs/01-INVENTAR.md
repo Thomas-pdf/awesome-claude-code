@@ -60,6 +60,8 @@ Berichte nach Jahr: 2000–2014 zusammen 87, 2015: 32, 2016: 43, 2017: 55, 2018:
 
 ## Was nicht ging / Auffälligkeiten
 
+0. **Doppelte Einsatznummer 2020/7:** Auf der alten Seite gibt es sowohl B_2020/7 (Brand) als auch H_2020/7 (Hilfeleistung). Beide sind übernommen (`2020-007` und `2020-007-b`).
+
 1. **2 Dateien sind schon auf der alten Seite defekt:** ein Foto im Bericht „MTK-West Übung 2024“ und die PDF „2024 – Eintrittserklärung Minilöscher“. Bitte neu beschaffen.
 2. **Datum der Berichte:** Die alte Seite speichert kein Veröffentlichungsdatum, nur „zuletzt aktualisiert“. Dieses Datum wurde übernommen. Bei älteren Berichten, die später nochmal bearbeitet wurden, kann das Datum daher etwas zu spät liegen. Wo der Bericht in einem Jahresarchiv stand, wurde das Jahr daraus abgeleitet.
 3. **Bildbeschreibungen (Alt-Texte):** Die meisten Archivfotos hatten nur Platzhalter-Beschreibungen (z. B. „6“). Für Barrierefreiheit sollten wichtige Bilder nach und nach beschrieben werden.

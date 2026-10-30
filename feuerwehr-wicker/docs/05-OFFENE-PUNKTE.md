@@ -25,7 +25,8 @@ Zum Ausdrucken und Abhaken. Sortiert nach Ansprechpartner. **Fett** = vor dem Li
 - [ ] Private Berichte (Hochzeiten 2023/2024, Nachrufe) weiter veröffentlichen? Bei Nachrufen ggf. Angehörige fragen.
 - [ ] **Hosting-Entscheidung** (siehe Anleitung, Schritt 3) und Budget (ca. 25–85 €/Jahr).
 - [ ] Zugänge: mindestens 2 Verantwortliche für GitHub, Hosting und Domain.
-- [ ] **Logo/Wappen:** Das Logo im Prototyp ist ein **Platzhalter** (rotes Schild mit „W“). Bitte das offizielle Wappen bzw. Vereinslogo als Vektordatei (SVG/PDF/EPS) besorgen und die Nutzungsrechte klären.
+- [ ] **Logo:** Eingebaut ist jetzt das Logo „Feuerwehren Stadt Flörsheim am Main“. Nutzungsrecht mit der Stadt klären und das Logo möglichst als Vektordatei (SVG/PDF/EPS) besorgen, damit es überall gestochen scharf ist.
+- [ ] **Fotos in hoher Auflösung:** Die alte Seite hat fast alle Fotos nur in 640 px Breite gespeichert. Für das neue, großzügige Design werden für Startseite und Bereichsseiten **10–20 aktuelle Fotos in Originalauflösung** benötigt (Fahrzeuge, Mannschaft, Übungen, Jugend, Minis, Feuerwehrhaus).
 - [ ] Gutes **Titelfoto** für die Startseite auswählen (derzeit: Gruppenfoto Einsatzabteilung 2024).
 - [ ] Instagram-Kanal vorhanden? Dann in `src/lib/site.ts` ergänzen.
 - [ ] Eintrittserklärung Minilöscher (PDF) neu hinterlegen. Die Datei ist auf der alten Seite defekt.
@@ -45,7 +46,8 @@ Zum Ausdrucken und Abhaken. Sortiert nach Ansprechpartner. **Fett** = vor dem Li
 ## D. Technische Restpunkte (kann Claude Code erledigen)
 
 - [ ] Umzug in ein eigenes, privates Repository des Vereins (siehe Anleitung, Schritt 4).
-- [ ] Offizielles Logo einbauen, sobald vorhanden.
+- [ ] Logo als Vektordatei einbauen, sobald vorhanden.
+- [ ] Hochauflösende Fotos in Startseite und Bereichsseiten einbauen.
 - [ ] Bildbeschreibungen (Alt-Texte) für wichtige Archivbilder nachtragen.
 - [ ] Optional: Daten älterer Berichte korrigieren, wo „zuletzt geändert“ deutlich nach dem Ereignis liegt.
 - [ ] Optional: Hochwertiges Vorschaubild für Social Media (`public/og-bild.jpg`, 1200×630).

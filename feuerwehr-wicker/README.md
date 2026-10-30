@@ -7,6 +7,7 @@ Moderner, schneller und sicherer Nachfolger von www.feuerwehr-wicker.de, mit **a
 | **Technik** | [Astro](https://astro.build) – statische Website, keine Datenbank, kein PHP |
 | **Inhalte** | Markdown-Dateien in `src/content/`, pflegbar im Browser mit [Pages CMS](https://pagescms.org) |
 | **Suche** | [Pagefind](https://pagefind.app) – Volltextsuche ohne Server |
+| **Design** | hell, im Stil von apple.com; Schrift Inter (lokal); offizielles Logo der Feuerwehren Flörsheim |
 | **Datenschutz** | keine Cookies, keine Tracker, Schriften lokal, keine externen Einbindungen |
 | **Barrierefreiheit** | WCAG-2-AA-Prüfung mit axe ohne Befund, Tastaturbedienung, „Zum Inhalt springen“ |
 | **SEO** | Sitemap, strukturierte Daten (FireStation), Open-Graph-Bilder, saubere URLs, 2.218 Weiterleitungen alter Links |

@@ -163,6 +163,7 @@ for n in order:
 
 # Einsatz-URLs
 EURL = {}
+VERGEBEN = set()
 def einsatz_url(enr):
     return EURL.get(enr, "/einsaetze")
 
@@ -367,6 +368,8 @@ def einsaetze():
         num = d["nummer"].split("/")[-1] if "/" in d["nummer"] else str(d["enr"])
         typ = d["nummer"].split("_")[0] if "_" in d["nummer"] else ""
         slug = f"{y}-{int(num):03d}" if num.isdigit() else f"{y}-{d['enr']}"
+        if slug in VERGEBEN: slug += "-" + (typ.lower() or str(d["enr"]))  # gleiche Nummer bei B und H
+        VERGEBEN.add(slug)
         EURL[d["enr"]] = f"/einsaetze/{y}/{slug}"
         d["slug"] = slug; d["typ"] = typ
     return out

@@ -13,5 +13,14 @@ Branch: `feuerwehr-wicker-website` · Ordner: `feuerwehr-wicker/`
 - [x] Dokumentation 01–05, Deploy-Vorlagen (GitHub Action FTP, Netlify)
 - [x] Online-Vorschau (Auswahl von 40 Seiten) als Claude-Artifact
 
+## Runde 2 (30.10.2026)
+- [x] Offizielles Logo „Feuerwehren Stadt Flörsheim am Main“ überall, Favicon = F aus dem Logo (exakt vermessen)
+- [x] Helles Redesign im Apple-Stil (Inter, Weiß/Hellgrau, Glas-Navigation, Kacheln)
+- [x] Startseite: Einsatzgeschehen monatsbezogen + direkte Links zu den Einsatzberichten
+- [x] Einsatzberichte in den Jahreslisten aufklappbar
+- [x] Fehler „neue Seite öffnet unten“ behoben
+- [x] Doppelte Einsatznummer 2020/7 korrigiert (jetzt alle 1.540 Einsätze)
+- [x] Vorschau mit allen 525 Berichten und 1.540 Einsätzen
+
 ## Nächste Schritte
 Siehe `05-OFFENE-PUNKTE.md`.
